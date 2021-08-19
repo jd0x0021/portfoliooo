@@ -3608,6 +3608,17 @@ img.u-pull-left {
 }
 
 /* ===================================================================
+ * # SKILLS
+ *
+ *
+ * ------------------------------------------------------------------- */
+
+.s-skills {
+  padding-top: var(--vspace-3);
+  padding-bottom: var(--vspace-3);
+}
+
+/* ===================================================================
  * # WORKS
  *
  *
@@ -3616,6 +3627,7 @@ img.u-pull-left {
 .s-works {
   padding-top: var(--vspace-3);
   padding-bottom: var(--vspace-3_5);
+  /* border: 1px solid blue; */
 }
 
 .s-works .h1 {
