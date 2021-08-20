@@ -4294,10 +4294,13 @@ img.u-pull-left {
 
 .card {
   width: 100%;
-  margin: 10px 0;
   padding: 40px;
   border-radius: 15px;
   background-color: rgb(44, 44, 45, 0.2);
+}
+
+.card:not(:last-child) {
+  margin-bottom: 35px;
 }
 
 .card img {
