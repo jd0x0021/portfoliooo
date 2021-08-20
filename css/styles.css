@@ -3467,7 +3467,6 @@ img.u-pull-left {
 
 .about-expertise .expertise-header {
   color: var(--color-1);
-  font-size: 1.1em;
   font-weight: bold;
   margin-bottom: 30px;
 }
@@ -4313,4 +4312,19 @@ img.u-pull-left {
 
 .card h2 {
   text-align: center;
+  font-size: 15px;
+}
+
+.card li {
+  list-style-type: none;
+  font-size: 1.1em;
+}
+
+.card li::before {
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 18px;
+  margin-right: 8px;
+  background: transparent url("/images/skills/arrow-right.svg") no-repeat;
 }
