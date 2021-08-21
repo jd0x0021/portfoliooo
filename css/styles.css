@@ -4329,8 +4329,11 @@ img.u-pull-left {
 
 .card h2 {
   text-align: center;
-  font-size: 25px;
+  font-size: 35px;
   margin-bottom: 30px;
+  margin-top: 0;
+  font-family: var(--font-2);
+  font-weight: 400;
 }
 
 .card ul {
@@ -4364,7 +4367,7 @@ img.u-pull-left {
   }
 
   .card h2 {
-    font-size: 15px;
+    font-size: 28px;
   }
 }
 
@@ -4377,19 +4380,13 @@ img.u-pull-left {
   }
 
   .card h2 {
-    font-size: 18.5px;
+    font-size: 31px;
   }
 }
 
 @media (min-width: 801px) {
   .card h2 {
-    font-size: 21px;
-  }
-}
-
-@media (min-width: 1000px) {
-  .card h2 {
-    font-size: 21px;
+    font-size: 33px;
   }
 }
 
