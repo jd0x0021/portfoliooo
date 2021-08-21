@@ -4286,21 +4286,37 @@ img.u-pull-left {
  *
  * ------------------------------------------------------------------- */
 .skill-cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-areas:
+    "front-end"
+    "back-end"
+    "tools"
+    "design";
+  gap: 35px;
+}
+
+.front-end {
+  grid-area: front-end;
+}
+
+.back-end {
+  grid-area: back-end;
+}
+
+.tools {
+  grid-area: tools;
+}
+
+.design {
+  grid-area: design;
 }
 
 .card {
   width: 100%;
+  height: 439.58px;
   padding: 40px;
   border-radius: 15px;
   background-color: rgb(44, 44, 45, 0.2);
-}
-
-.card:not(:last-child) {
-  margin-bottom: 35px;
 }
 
 .card img {
@@ -4334,6 +4350,6 @@ img.u-pull-left {
   background: transparent url("/images/skills/arrow-right.svg") no-repeat;
 }
 
-.card li:not(:last-child) {
-  margin-bottom: 15px;
+/* responsive skill cards */
+@media (min-width: 500px) {
 }
