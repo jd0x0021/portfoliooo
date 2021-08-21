@@ -4323,7 +4323,8 @@ img.u-pull-left {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  width: 150px;
+  max-width: 145px;
+  max-height: 117px;
 }
 
 .card h2 {
@@ -4351,5 +4352,11 @@ img.u-pull-left {
 }
 
 /* responsive skill cards */
-@media (min-width: 500px) {
+@media (min-width: 550px) {
+  .skill-cards {
+    grid-template-areas:
+      "front-end back-end"
+      "tools design";
+    gap: 35px;
+  }
 }
