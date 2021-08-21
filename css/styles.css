@@ -4335,7 +4335,7 @@ img.u-pull-left {
   text-align: center;
   font-size: 35px;
   margin-bottom: 30px;
-  margin-top: 0;
+  margin-top: 20px;
   font-family: var(--font-2);
   font-weight: 400;
 }
