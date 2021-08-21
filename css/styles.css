@@ -4319,9 +4319,13 @@ img.u-pull-left {
   background-color: rgb(44, 44, 45, 0.2);
 }
 
+.card .card-body {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
 .card img {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   display: block;
   width: 145px;
   height: 116px;
