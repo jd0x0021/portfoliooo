@@ -4323,8 +4323,8 @@ img.u-pull-left {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  max-width: 145px;
-  max-height: 117px;
+  width: 145px;
+  height: 116px;
 }
 
 .card h2 {
