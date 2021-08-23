@@ -2683,6 +2683,10 @@ img.u-pull-left {
 /* ------------------------------------------------------------------- 
  * ## theme-specific typography classes
  * ------------------------------------------------------------------- */
+.accent-highlight {
+  color: var(--color-1);
+}
+
 .text-pretitle {
   font-family: var(--font-1);
   font-size: var(--text-sm);
