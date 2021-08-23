@@ -2684,7 +2684,7 @@ img.u-pull-left {
  * ## theme-specific typography classes
  * ------------------------------------------------------------------- */
 .accent-highlight {
-  color: var(--color-1);
+  color: #e9b361;
 }
 
 .text-pretitle {
