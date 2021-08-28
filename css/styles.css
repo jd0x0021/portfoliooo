@@ -3468,7 +3468,7 @@ img.u-pull-left {
  * ## about expertise
  * -------------------------------------------------------------------- */
 .about-expertise {
-  padding-top: calc(3.4 * var(--space));
+  padding-top: calc(3.8 * var(--space));
 }
 
 .about-expertise .expertise-header {
