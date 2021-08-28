@@ -3824,7 +3824,7 @@ img.u-pull-left {
   font-family: var(--font-1);
   font-size: var(--text-size);
   line-height: var(--vspace-1);
-  font-weight: 500;
+  font-weight: 800;
   margin-top: 0;
   margin-bottom: var(--vspace-0_25);
   color: black;
@@ -3832,6 +3832,10 @@ img.u-pull-left {
 
 .modal-popup__desc {
   padding: 0 var(--vspace-1_25) var(--vspace-0_25);
+}
+
+.modal-popup__desc p {
+  font-weight: bold;
 }
 
 .modal-popup__cat {
@@ -3861,6 +3865,7 @@ img.u-pull-left {
 .modal-popup__cat li {
   display: inline;
   padding-left: 0;
+  font-weight: bold;
 }
 
 .modal-popup__cat li::after {
