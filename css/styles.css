@@ -3428,7 +3428,7 @@ img.u-pull-left {
 
 .s-about {
   padding-top: var(--vspace-3);
-  padding-bottom: var(--vspace-3);
+  padding-bottom: var(--vspace-2_5);
 }
 
 /* --------------------------------------------------------------------
@@ -3468,7 +3468,7 @@ img.u-pull-left {
  * ## about expertise
  * -------------------------------------------------------------------- */
 .about-expertise {
-  padding-top: calc(6 * var(--space));
+  padding-top: calc(3.4 * var(--space));
 }
 
 .about-expertise .expertise-header {
@@ -3627,7 +3627,7 @@ img.u-pull-left {
 
 .s-works {
   padding-top: var(--vspace-2_5);
-  padding-bottom: var(--vspace-2_5);
+  padding-bottom: var(--vspace-0_875);
 }
 
 .s-works .h1 {
@@ -4085,7 +4085,7 @@ img.u-pull-left {
  * ------------------------------------------------------------------- */
 
 .contact-top {
-  padding-top: var(--vspace-5);
+  padding-top: var(--vspace-3);
   /* border-top: 1px solid var(--color-border); */
 }
 
