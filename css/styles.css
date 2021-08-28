@@ -3626,9 +3626,8 @@ img.u-pull-left {
  * ------------------------------------------------------------------- */
 
 .s-works {
-  padding-top: var(--vspace-3);
-  padding-bottom: var(--vspace-3_5);
-  /* border: 1px solid blue; */
+  padding-top: var(--vspace-2_5);
+  padding-bottom: var(--vspace-2_5);
 }
 
 .s-works .h1 {
