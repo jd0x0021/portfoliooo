@@ -4287,6 +4287,39 @@ img.u-pull-left {
 }
 
 /* ===================================================================
+ * # Works (Modal) 
+ *
+ *
+ * ------------------------------------------------------------------- */
+
+.modal-title {
+  display: inline;
+}
+
+.project-links {
+  display: inline-flex;
+  position: absolute;
+  top: var(--vspace-1);
+  left: var(--vspace-1);
+}
+
+.project-link-btn {
+  background-color: #3e3e3f;
+  font-size: var(--text-xs);
+  line-height: var(--vspace-1_25);
+  color: #ecbe79;
+  padding: 0 1.2rem;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.project-link-btn:focus,
+.project-link-btn:hover {
+  background-color: #5a5a5e;
+  color: #f8ecec;
+}
+
+/* ===================================================================
  * # Skills/Expertise 
  *
  *
