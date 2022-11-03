@@ -3234,7 +3234,7 @@ img.u-pull-left {
   min-height: calc(25.5 * var(--space));
   justify-content: center;
   align-items: center;
-  padding-top: calc(16vh + var(--header-height));
+  padding-top: 22.5vh; /*last value after the +: var(--header-height)*/
   padding-bottom: var(--vspace-2);
 }
 
@@ -3336,7 +3336,7 @@ img.u-pull-left {
   }
 
   .intro-content {
-    padding-top: calc(14vh + var(--header-height));
+    padding-top: calc(14vh);
   }
 }
 
