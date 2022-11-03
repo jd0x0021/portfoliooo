@@ -3649,6 +3649,30 @@ img.u-pull-left {
 }
 
 /* --------------------------------------------------------------------
+ * ## Skills/Technologies
+ * -------------------------------------------------------------------- */
+#skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  padding-bottom: var(--vspace-1_75);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-gray-9);
+  padding: 0.25em 1.2em;
+  border-radius: 10px;
+}
+
+.badge img {
+  height: 25px;
+  padding-right: 8px;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------
  * ## works portfolio
  * -------------------------------------------------------------------- */
 .folio-list {
