@@ -68,6 +68,7 @@
                         <li><a href="#works" class="smoothscroll">Works</a></li>
                         <li><a href="#about" class="smoothscroll">About</a></li>
                         <li><a href="#contact" class="smoothscroll">Contact</a></li>
+                        <li><a href="/resume/JohnDalmaoResume2021.pdf" target="_blank">Resume</a></li>
                     </ul>
                 </nav>
             </div>
@@ -96,6 +97,12 @@
                             a creative <br>
                             Software Engineer. <br>
                         </h1>
+
+                        <h1 class="text-huge-title">
+                            <a href="#works" class="btn cta smoothscroll">
+                                Check out my projects
+                            </a>
+                        </h1>
                     </div>
 
                     <ul class="intro-social">
@@ -105,11 +112,6 @@
 
                 </div> <!-- end intro content -->
 
-                <!--Arrow to scroll down-->
-                <!-- <a href="#about" class="intro-scrolldown smoothscroll">
-                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
-                </a> -->
-
             </section> <!-- end s-intro -->
 
 
@@ -118,9 +120,17 @@
             <section id="works" class="s-works target-section">
                 <div class="row works-portfolio">
                     <div class="column lg-12" data-animate-block>
-                        <h2 class="text-pretitle" data-animate-el>
-                            Relevant Works
-                        </h2>
+                        <div class="technologies-wrapper">
+                            <h2 class="text-pretitle" data-animate-el>
+                                The skills that turned my ideas to reality
+                            </h2>
+
+                            <div id="skills" data-animate-el>
+                                <!-- The data here is rendered in js/skills/render-skills.js -->
+                            </div>
+                        </div>
+
+                        <h2 class="text-pretitle with-line expertise-header" data-animate-el>Relevant Works</h2>
 
                         <p class="h1" data-animate-el>
                             Here are some of the projects I've built. Feel free to check them out.
@@ -144,7 +154,7 @@
                                 </a>
                                 <a class="folio-list__proj-link" href="https://github.com/paraJdox/Paraject"
                                     target="_blank" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    <svg width="15" height="15" viewbox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
@@ -171,7 +181,7 @@
                                 </a>
                                 <a class="folio-list__proj-link" href="https://github.com/paraJdox/PowerMonitor"
                                     target="_blank" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    <svg width="15" height="15" viewbox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
@@ -198,7 +208,7 @@
                                 </a>
                                 <a class="folio-list__proj-link" href="https://github.com/paraJdox/Pastel-Cat-Website"
                                     target="_blank" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    <svg width="15" height="15" viewbox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
@@ -225,7 +235,7 @@
                                 </a>
                                 <a class="folio-list__proj-link" href="https://github.com/paraJdox/Pizza-Shop"
                                     target="_blank" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    <svg width="15" height="15" viewbox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
@@ -252,7 +262,7 @@
                                 </a>
                                 <a class="folio-list__proj-link" href="https://github.com/paraJdox/Astral"
                                     target="_blank" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    <svg width="15" height="15" viewbox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
@@ -279,7 +289,7 @@
                                 </a>
                                 <a class="folio-list__proj-link" href="https://github.com/paraJdox/Global-Axis"
                                     target="_blank" title="project link">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    <svg width="15" height="15" viewbox="0 0 15 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
@@ -321,6 +331,7 @@
                                     <li>T-SQL</li>
                                     <li>LocalDB</li>
                                     <li>WiX Toolset</li>
+                                    <li>Figma</li>
                                 </ul>
                             </div>
 
@@ -370,7 +381,9 @@
                                         class="project-link-btn">Live View</a>
                                 </div>
 
-                                <p>A static website created with custom CSS: grid, flexbox, and media queries.</p>
+                                <p>A static website created with custom CSS: grid, flexbox, and media queries. This
+                                    project really helped me improve on how to approach layouts and
+                                    responsiveness.</p>
 
                                 <ul class="modal-popup__cat">
                                     <li>HTML</li>
@@ -396,7 +409,8 @@
                                         class="project-link-btn">Live View</a>
                                 </div>
 
-                                <p>A static website created with HTML, CSS, and Bootstrap v4.4.1.</p>
+                                <p>A static website created with HTML, CSS, and Bootstrap v4.4.1 which enhanced my
+                                    method of handling utility classes.</p>
 
                                 <ul class="modal-popup__cat">
                                     <li>HTML</li>
@@ -423,7 +437,9 @@
                                         class="project-link-btn">Live View</a>
                                 </div>
 
-                                <p>A static website created with custom CSS and HTML Semantics.</p>
+                                <p>A static website created with custom CSS and HTML Semantics which showcases my
+                                    ability to turn <a href="https://html5up.net/stellar" target="_blank">design</a>
+                                    into working code (though I modified it a little).</p>
 
                                 <ul class="modal-popup__cat">
                                     <li>HTML</li>
@@ -475,98 +491,28 @@
                         <div class="about-info__text">
 
                             <h2 class="text-pretitle with-line" data-animate-el>
-                                About
+                                About Me
                             </h2>
 
                             <p class="attention-getter" data-animate-el>
                                 I am <span class="accent-highlight"> John Dave Dalmao</span>. I enjoy
-                                playing around the <span class="accent-highlight">.NET ecosystem</span>,
+                                developing in the <span class="accent-highlight">.NET ecosystem</span>,
                                 working on both <span class="accent-highlight">front-end</span> and <span
                                     class="accent-highlight">back-end</span>.
-                                Nevertheless, I am always striving to
-                                learn and
-                                develop new
+                                I am always striving to learn and develop new
                                 skills and become a better software engineer.
                             </p>
 
                             <p class="attention-getter" data-animate-el>
-                                My main experience is in <span class="accent-highlight">desktop app development</span>
+                                My main experience is in <span class="accent-highlight">desktop application
+                                    development</span>
                                 and
                                 <span class="accent-highlight">front-end web development</span>. However, I
                                 also love creating simple yet artistic <span class="accent-highlight">UI designs</span>.
                             </p>
-
-                            <a href="/resume/JohnDalmaoResume2021.pdf" class="btn btn--medium u-fullwidth"
-                                target="_blank" data-animate-el>Resume</a>
-                            <!-- btn--medium u-halfwidth -->
-                            <!-- <a href="#0" class="btn btn-resume" data-animate-el>Download Resume</a>
-                                        <a href="#0" class="btn btn-resume" data-animate-el>View Resume</a> -->
                         </div>
                     </div>
                 </div> <!-- about-info -->
-
-                <!-- skills / expertise -->
-                <div class="row about-expertise" data-animate-block>
-                    <div class="column lg-12">
-
-                        <h2 class="text-pretitle with-line expertise-header" data-animate-el>Skills</h2>
-
-                        <!-- different skill areas -->
-                        <div class="skill-cards">
-
-                            <!-- Front end -->
-                            <div class="card front-end" data-animate-el>
-                                <div class="card-body">
-                                    <img src="images/skills/front-end.svg" alt="Front end Skills">
-                                    <h2>Front end</h2>
-                                    <ul>
-                                        <li>HTML & CSS</li>
-                                        <li>Bootstrap</li>
-                                        <li>WPF</li>
-                                        <li>WinForms</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Back end -->
-                            <div class="card back-end" data-animate-el>
-                                <div class="card-body">
-                                    <img src="images/skills/back-end.svg" alt="Back end Skills">
-                                    <h2>Back end</h2>
-                                    <ul>
-                                        <li>C#</li>
-                                        <li>T-SQL</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Tools -->
-                            <div class="card tools" data-animate-el>
-                                <div class="card-body">
-                                    <img src="images/skills/tools.svg" alt="Tools Used">
-                                    <h2>Tools</h2>
-                                    <ul>
-                                        <li>ADO.NET</li>
-                                        <li>WiX Toolset</li>
-                                        <li>Git & GitHub</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Design -->
-                            <div class="card design" data-animate-el>
-                                <div class="card-body">
-                                    <img src="images/skills/design.svg" alt="Design Skills">
-                                    <h2>Design</h2>
-                                    <ul>
-                                        <li>Figma</li>
-                                        <li>Adobe Illustrator</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end about-expertise -->
             </section> <!-- end s-about -->
 
 
@@ -576,7 +522,7 @@
 
                 <div class="row contact-top">
                     <div class="column lg-12">
-                        <h2 class="text-pretitle" data-animate-el>
+                        <h2 class="text-pretitle with-line" data-animate-el>
                             Get In Touch
                         </h2>
 
@@ -627,7 +573,7 @@
 
                 <div class="ss-go-top">
                     <a class="smoothscroll" title="Back to Top" href="#top">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill-rule="evenodd"
+                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill-rule="evenodd"
                             clip-rule="evenodd">
                             <path
                                 d="M11 2.206l-6.235 7.528-.765-.645 7.521-9 7.479 9-.764.646-6.236-7.53v21.884h-1v-21.883z" />
@@ -645,7 +591,7 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
+    <script src="js/skills/render-skills.js" type="module"></script>
 </body>
 
 </html>

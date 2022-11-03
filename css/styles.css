@@ -410,6 +410,7 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  appearance: button;
 }
 
 button::-moz-focus-inner,
@@ -461,15 +462,18 @@ textarea {
 
 [type="search"] {
   -webkit-appearance: textfield;
+  appearance: button;
   outline-offset: -2px;
 }
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
+  appearance: button;
 }
 
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
+  appearance: button;
   font: inherit;
 }
 
@@ -3234,7 +3238,7 @@ img.u-pull-left {
   min-height: calc(25.5 * var(--space));
   justify-content: center;
   align-items: center;
-  padding-top: calc(16vh + var(--header-height));
+  padding-top: 22.5vh; /*last value after the +: var(--header-height)*/
   padding-bottom: var(--vspace-2);
 }
 
@@ -3336,7 +3340,7 @@ img.u-pull-left {
   }
 
   .intro-content {
-    padding-top: calc(14vh + var(--header-height));
+    padding-top: calc(14vh);
   }
 }
 
@@ -3417,6 +3421,16 @@ img.u-pull-left {
 @media screen and (max-width: 350px) {
   .intro-social {
     display: none;
+  }
+
+  #intro .cta {
+    padding: 0 3.6rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #intro .cta {
+    padding: 0 2.5rem;
   }
 }
 
@@ -3635,12 +3649,36 @@ img.u-pull-left {
 }
 
 /* --------------------------------------------------------------------
+ * ## Skills/Technologies
+ * -------------------------------------------------------------------- */
+#skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  padding-bottom: var(--vspace-3_5);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-gray-9);
+  padding: 0.25em 1.2em;
+  border-radius: 10px;
+}
+
+.badge img {
+  height: 25px;
+  padding-right: 8px;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------
  * ## works portfolio
  * -------------------------------------------------------------------- */
 .folio-list {
   --item-min-height: var(--vspace-4_5);
   list-style: none;
-  margin-top: var(--vspace-4);
+  margin-top: var(--vspace-3);
   margin-bottom: var(--vspace-1);
   margin-left: 0;
 }
@@ -3890,6 +3928,16 @@ img.u-pull-left {
 .modal-popup__details:hover {
   background-color: var(--color-body);
   color: white;
+}
+
+.modal-popup p a {
+  color: var(--color-2);
+}
+
+.modal-popup p a:focus,
+.modal-popup p a:hover,
+.modal-popup p a:active {
+  color: var(--color-2-light);
 }
 
 /* ------------------------------------------------------------------- 
@@ -4315,6 +4363,8 @@ img.u-pull-left {
   padding: 0 1.2rem;
   border-radius: 8px;
   margin-left: 10px;
+  border: 1px solid #ecbe79;
+  box-shadow: 5px 5px 4px black;
 }
 
 .project-link-btn:focus,
