@@ -3930,6 +3930,16 @@ img.u-pull-left {
   color: white;
 }
 
+.modal-popup p a {
+  color: var(--color-2);
+}
+
+.modal-popup p a:focus,
+.modal-popup p a:hover,
+.modal-popup p a:active {
+  color: var(--color-2-light);
+}
+
 /* ------------------------------------------------------------------- 
  * ## testimonials
  * ------------------------------------------------------------------- */
