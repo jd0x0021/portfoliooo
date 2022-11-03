@@ -3655,7 +3655,7 @@ img.u-pull-left {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8em;
-  padding-bottom: var(--vspace-1_75);
+  padding-bottom: var(--vspace-3_5);
 }
 
 .badge {
@@ -3678,7 +3678,7 @@ img.u-pull-left {
 .folio-list {
   --item-min-height: var(--vspace-4_5);
   list-style: none;
-  margin-top: var(--vspace-4);
+  margin-top: var(--vspace-3);
   margin-bottom: var(--vspace-1);
   margin-left: 0;
 }

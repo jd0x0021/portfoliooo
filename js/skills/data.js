@@ -7,7 +7,7 @@ const bootstrap = {
 const wpf = { icon: "images/icons/skills/wpf.png", label: "WPF" };
 const winforms = {
   icon: "images/icons/skills/winforms.png",
-  label: "Winforms",
+  label: "WinForms",
 };
 const csharp = { icon: "images/icons/skills/csharp.svg", label: "C#" };
 const sqlServer = {
