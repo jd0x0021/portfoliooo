@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { classes } from '~/utils/style';
 import styles from './icon.module.css';
+import { default as sprites } from './icons.svg';
 
 export const Icon = forwardRef(({ icon, className, size, ...rest }, ref) => {
   return (
@@ -12,8 +13,7 @@ export const Icon = forwardRef(({ icon, className, size, ...rest }, ref) => {
       height={size || 24}
       {...rest}
     >
-      {/* select the right SVG sprite here */}
-      <use href={`./icons.svg#${icon}`} />
+      <use href={`${sprites}#${icon}`} />
     </svg>
   );
 });
