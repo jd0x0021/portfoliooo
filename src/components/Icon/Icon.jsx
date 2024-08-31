@@ -13,7 +13,7 @@ export const Icon = forwardRef(({ icon, className, size, ...rest }, ref) => {
       height={size || 24}
       {...rest}
     >
-      <use href={`${sprites}#${icon}`} />
+      <use href={`${sprites}#${icon}`} crossOrigin="anonymous" />
     </svg>
   );
 });
