@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
-import styles from '~/app.module.css';
 import GothamBook from '~/assets/fonts/gotham-book.woff2';
 import GothamMedium from '~/assets/fonts/gotham-medium.woff2';
 import { Intro } from '~/components/Intro';
@@ -7,12 +6,13 @@ import { Progress } from '~/components/Progress';
 import { ThemeProvider, themeStyles } from '~/components/ThemeProvider';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
 import config from '~/config.json';
-import '~/global.module.css';
 import { useHydrated } from '~/hooks/useHydrated';
 import { Error } from '~/layouts/Error';
 import { Navbar } from '~/layouts/Navbar';
-import '~/reset.module.css';
 import { baseMeta } from '~/utils/meta';
+import styles from './app.module.css';
+import './global.module.css';
+import './reset.module.css';
 
 export const links = () => [
   {
