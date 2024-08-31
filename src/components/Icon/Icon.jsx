@@ -1,12 +1,8 @@
 import { forwardRef } from 'react';
 import { classes } from '~/utils/style';
 import styles from './icon.module.css';
-import sprites from './icons.svg';
 
 export const Icon = forwardRef(({ icon, className, size, ...rest }, ref) => {
-  // remove after debugging (in v2 prod branch)
-  console.log(sprites);
-
   return (
     <svg
       aria-hidden
@@ -16,7 +12,8 @@ export const Icon = forwardRef(({ icon, className, size, ...rest }, ref) => {
       height={size || 24}
       {...rest}
     >
-      <use href={`${sprites}#${icon}`} crossOrigin="anonymous" />
+      {/* select the right SVG sprite here */}
+      <use href={`./icons.svg#${icon}`} />
     </svg>
   );
 });
