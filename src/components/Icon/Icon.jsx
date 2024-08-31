@@ -4,6 +4,9 @@ import styles from './icon.module.css';
 import sprites from './icons.svg';
 
 export const Icon = forwardRef(({ icon, className, size, ...rest }, ref) => {
+  // remove after debugging (in v2 prod branch)
+  console.log(sprites);
+
   return (
     <svg
       aria-hidden
