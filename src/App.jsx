@@ -11,8 +11,6 @@ import { Error } from '~/layouts/Error';
 import { Navbar } from '~/layouts/Navbar';
 import { baseMeta } from '~/utils/meta';
 import styles from './app.module.css';
-import './global.module.css';
-import './reset.module.css';
 
 export const links = () => [
   {
