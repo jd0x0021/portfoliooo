@@ -11,6 +11,7 @@ import sliceTexture from '~/assets/slice-app.jpg';
 import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
 import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
+import { Footer } from '~/components/Footer';
 import { Intro } from '~/components/Intro';
 import { Profile } from '~/components/Profile';
 import { Progress } from '~/components/Progress';
@@ -222,11 +223,13 @@ function App() {
               <DisplacementSphere />
             </Suspense>
           ) : null}
+
           <Intro
             id="intro"
             sectionRef={intro}
             scrollIndicatorHidden={scrollIndicatorHidden}
           />
+
           <ProjectSummary
             id="project-1"
             sectionRef={projectOne}
@@ -294,11 +297,14 @@ function App() {
               ],
             }}
           />
+
           <Profile
             sectionRef={details}
             visible={visibleSections.includes(details.current)}
             id="details"
           />
+
+          <Footer />
         </div>
       </main>
     </ThemeProvider>
