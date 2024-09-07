@@ -4,9 +4,12 @@ import { DRACOLoader, GLTFLoader } from 'three-stdlib';
 // Enable caching for all loaders
 Cache.enabled = true;
 
+// Reference for the dracoLoader's decoder path:
+// https://stackoverflow.com/a/62197431/11565087
 const dracoLoader = new DRACOLoader();
 const gltfLoader = new GLTFLoader();
-dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+dracoLoader.setDecoderConfig({ type: 'js' });
 gltfLoader.setDRACOLoader(dracoLoader);
 
 /**
