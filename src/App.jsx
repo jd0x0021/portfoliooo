@@ -216,7 +216,7 @@ function App() {
         tabIndex={-1}
         // data-loading={state === 'loading'}
       >
-        <div className={styles.home}>
+        <div>
           {isHydrated ? (
             <Suspense>
               <DisplacementSphere />
