@@ -12,7 +12,9 @@ import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-lar
 import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
 import { Intro } from '~/components/Intro';
+import { Profile } from '~/components/Profile';
 import { Progress } from '~/components/Progress';
+import { ProjectSummary } from '~/components/ProjectSummary';
 import { ThemeProvider, themeStyles } from '~/components/ThemeProvider';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
 import config from '~/config.json';
@@ -21,7 +23,6 @@ import { Error } from '~/layouts/Error';
 import { Navbar } from '~/layouts/Navbar';
 import { baseMeta } from '~/utils/meta';
 import styles from './app.module.css';
-import { ProjectSummary } from './components/ProjectSummary';
 
 // export const links = () => [
 //   {
@@ -142,8 +143,7 @@ function App() {
   const isHydrated = useHydrated();
 
   useEffect(() => {
-    // const sections = [intro, projectOne, projectTwo, projectThree, details];
-    const sections = [intro, projectOne, projectTwo, projectThree];
+    const sections = [intro, projectOne, projectTwo, projectThree, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -293,6 +293,11 @@ function App() {
                 },
               ],
             }}
+          />
+          <Profile
+            sectionRef={details}
+            visible={visibleSections.includes(details.current)}
+            id="details"
           />
         </div>
       </main>
