@@ -1,3 +1,4 @@
+import { Link } from '~/components/Link';
 import { Text } from '~/components/Text';
 import config from '~/config.json';
 import { classes } from '~/utils/style';
@@ -9,13 +10,14 @@ export const Footer = ({ className }) => (
       <span className={styles.date}>
         {`© ${new Date().getFullYear()} ${config.name}.`}
       </span>
-      <a
+      <Link
+        secondary
         className={styles.link}
-        href="https://www.linkedin.com/in/johndavedalmao/"
+        href="https://github.com/davedalmao"
         target="_blank"
       >
         Crafted by yours truly
-      </a>
+      </Link>
     </Text>
   </footer>
 );

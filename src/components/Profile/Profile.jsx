@@ -6,6 +6,7 @@ import { DecoderText } from '~/components/DecoderText';
 import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
 import { Image } from '~/components/Image';
+import { Link } from '~/components/Link';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
 import { Transition } from '~/components/Transition';
@@ -19,10 +20,13 @@ const ProfileText = ({ visible, titleId }) => (
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       I’m John, currently I live in Lorem ipsum dolor sit amet consectetur, adipisicing
-      elit. Quasi, quam. <a href="https://www.example.com">Example</a>. Lorem ipsum dolor
-      sit, amet consectetur adipisicing elit. Culpa, consequatur dicta. Voluptate a,
-      cumque enim praesentium repudiandae, aperiam sint placeat odit architecto iusto
-      inventore culpa, minima labore sapiente asperiores pariatur!
+      elit. Quasi, quam.{' '}
+      <Link href="https://www.example.com" target="_blank">
+        Example
+      </Link>
+      . Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, consequatur
+      dicta. Voluptate a, cumque enim praesentium repudiandae, aperiam sint placeat odit
+      architecto iusto inventore culpa, minima labore sapiente asperiores pariatur!
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga debitis, ullam
