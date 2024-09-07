@@ -11,7 +11,6 @@ import { Transition } from '~/components/Transition';
 import { useHydrated } from '~/hooks/useHydrated';
 import { useWindowSize } from '~/hooks/useWindowSize';
 import { cssProps, media } from '~/utils/style';
-import katakana from './katakana.svg';
 import styles from './project-summary.module.css';
 
 const Model = lazy(() =>
@@ -58,7 +57,7 @@ export function ProjectSummary({
         data-device={device}
         viewBox="0 0 751 136"
       >
-        <use href={`${katakana}#katakana-project`} />
+        <use href="./katakana.svg#katakana-project" />
       </svg>
     );
   }
