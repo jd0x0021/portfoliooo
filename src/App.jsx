@@ -11,6 +11,7 @@ import sliceTexture from '~/assets/slice-app.jpg';
 import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
 import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
+import { Contact } from '~/components/Contact';
 import { Footer } from '~/components/Footer';
 import { Intro } from '~/components/Intro';
 import { Profile } from '~/components/Profile';
@@ -141,10 +142,11 @@ function App() {
   const projectTwo = useRef();
   const projectThree = useRef();
   const details = useRef();
+  const contact = useRef();
   const isHydrated = useHydrated();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, details, contact];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -302,6 +304,12 @@ function App() {
             sectionRef={details}
             visible={visibleSections.includes(details.current)}
             id="details"
+          />
+
+          <Contact
+            id="contact-form"
+            sectionRef={contact}
+            visible={visibleSections.includes(contact.current)}
           />
 
           <Footer />
