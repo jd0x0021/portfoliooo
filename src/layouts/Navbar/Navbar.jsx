@@ -1,5 +1,5 @@
-// import { Link as RouterLink, useLocation } from '@remix-run/react';
 import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Icon } from '~/components/Icon';
 import { Monogram } from '~/components/Monogram';
 import { useTheme } from '~/components/ThemeProvider';
@@ -19,7 +19,8 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [target, setTarget] = useState();
   const { theme } = useTheme();
-  // const location = useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
   const windowSize = useWindowSize();
   const headerRef = useRef();
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
@@ -142,18 +143,15 @@ export const Navbar = () => {
 
   return (
     <header className={styles.navbar} ref={headerRef}>
-      {/* <span>test</span> */}
-      <a
-        // unstable_viewTransition
-        // prefetch="intent"
-        // to={location.pathname === '/' ? '/#intro' : '/'}
+      <Link
         data-navbar-item
+        reloadDocument
+        to={'/'}
         className={styles.logo}
         aria-label={`${config.name}, ${config.role}`}
-        onClick={handleMobileNavClick}
       >
         <Monogram highlight />
-      </a>
+      </Link>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
         <div className={styles.navList}>
