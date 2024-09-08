@@ -1,13 +1,11 @@
 .contact {
-  --formHeight: 530px;
-
   display: grid;
   grid-template-rows: 1fr auto;
   grid-template-columns: 100%;
   justify-items: center;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
   width: 100%;
 
   @media (--mediaMobile) {
@@ -19,7 +17,7 @@
   grid-area: 1 / 1;
   max-width: var(--maxWidthS);
   width: 100%;
-  padding: var(--space2XL) 0;
+  padding: var(--space2XL) 0 0 0;
 
   @media (--mediaMobile) {
     padding: var(--space5XL) 0 var(--space2XL);
