@@ -34,7 +34,13 @@ export const Contact = ({ id, visible, sectionRef }) => {
   const initDelay = tokens.base.durationS;
 
   return (
-    <Section className={styles.contact} ref={sectionRef}>
+    <Section
+      className={styles.contact}
+      as="section"
+      ref={sectionRef}
+      id={id}
+      tabIndex={-1}
+    >
       <Transition unmount in={visible} timeout={0}>
         {({ status, nodeRef }) => (
           <form
