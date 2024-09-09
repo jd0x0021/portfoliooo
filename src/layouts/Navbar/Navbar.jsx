@@ -26,10 +26,11 @@ export const Navbar = () => {
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
   const scrollToHash = useScrollToHash();
 
-  // useEffect(() => {
-  //   // Prevent ssr mismatch by storing this in state
-  //   setCurrent(`${location.pathname}${location.hash}`);
-  // }, [location]);
+  // Select and highlight the current nav label when the page loads, and scroll
+  // to the specified section on the current page based on the url's hash (#).
+  useEffect(() => {
+    setCurrent(`${location.pathname}${location.hash}`);
+  }, [location]);
 
   // Handle smooth scroll nav items
   useEffect(() => {
