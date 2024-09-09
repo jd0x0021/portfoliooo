@@ -32,11 +32,11 @@ export const Navbar = () => {
   // }, [location]);
 
   // Handle smooth scroll nav items
-  // useEffect(() => {
-  //   if (!target || location.pathname !== '/') return;
-  //   setCurrent(`${location.pathname}${target}`);
-  //   scrollToHash(target, () => setTarget(null));
-  // }, [location.pathname, scrollToHash, target]);
+  useEffect(() => {
+    if (!target || location.pathname !== '/') return;
+    setCurrent(`${location.pathname}${target}`);
+    scrollToHash(target, () => setTarget(null));
+  }, [location.pathname, scrollToHash, target]);
 
   // Handle swapping the theme when intersecting with inverse themed elements
   useEffect(() => {
@@ -130,10 +130,11 @@ export const Navbar = () => {
     const hash = event.currentTarget.href.split('#')[1];
     setTarget(null);
 
-    // if (hash && location.pathname === '/') {
-    //   setTarget(`#${hash}`);
-    //   event.preventDefault();
-    // }
+    if (hash && location.pathname === '/') {
+      console.log(hash);
+      setTarget(`#${hash}`);
+      // event.preventDefault();
+    }
   };
 
   const handleMobileNavClick = event => {
@@ -156,10 +157,9 @@ export const Navbar = () => {
       <nav className={styles.nav}>
         <div className={styles.navList}>
           {navLinks.map(({ label, pathname }) => (
-            <a
-              // unstable_viewTransition
-              // prefetch="intent"
-              href={pathname}
+            <Link
+              unstable_viewTransition
+              to={pathname}
               key={label}
               data-navbar-item
               className={styles.navLink}
@@ -167,7 +167,7 @@ export const Navbar = () => {
               onClick={handleNavItemClick}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
         <NavbarIcons desktop />
