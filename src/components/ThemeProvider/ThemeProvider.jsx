@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import GothamBoldItalic from '~/assets/fonts/gotham-bold-italic.woff2';
 import GothamBold from '~/assets/fonts/gotham-bold.woff2';
 import GothamBookItalic from '~/assets/fonts/gotham-book-italic.woff2';
@@ -10,6 +10,8 @@ import { useInjectThemeStylesToGlobalTags } from '~/hooks/useInjectThemeStylesTo
 import { classes, media } from '~/utils/style';
 import { themes, tokens } from './theme';
 export const ThemeContext = createContext({});
+
+const UNIQUE_SESSION_THEME_KEY = 'jd-portfolio-theme';
 
 export function useTheme() {
   const currentTheme = useContext(ThemeContext);
@@ -144,16 +146,6 @@ const fontStyles = squish(`
   }
 `);
 
-const getInitialTheme = () => {
-  const initialTheme = localStorage.getItem('jd-portfolio-theme');
-
-  if (!initialTheme) {
-    return 'dark';
-  }
-
-  return initialTheme;
-};
-
 export const ThemeProvider = ({
   children,
   className,
@@ -162,9 +154,16 @@ export const ThemeProvider = ({
 }) => {
   const parentTheme = useTheme();
   const isRootProvider = !parentTheme.theme;
-  const [theme, setTheme] = useState(getInitialTheme() === 'dark' ? 'dark' : 'light');
+  const [theme, setTheme] = useState(() => {
+    const sessionTheme = sessionStorage.getItem(UNIQUE_SESSION_THEME_KEY);
+    return sessionTheme || 'dark';
+  });
 
   useInjectThemeStylesToGlobalTags(theme, themeStyles);
+
+  useEffect(() => {
+    sessionStorage.setItem(UNIQUE_SESSION_THEME_KEY, theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -173,11 +172,6 @@ export const ThemeProvider = ({
       setTheme('light');
     }
   };
-
-  // useEffect(() => {
-  //   typeof localStorage !== 'undefined' &&
-  //     localStorage.setItem('jd-portfolio-theme', theme);
-  // }, [theme]);
 
   return (
     <ThemeContext.Provider
