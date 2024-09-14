@@ -32,3 +32,41 @@ export function baseMeta({
     { property: 'twitter:image', content: ogImage },
   ];
 }
+
+/**
+ * Generate \<meta/> tag objects based on the current theme.
+ *
+ * @param theme - The main theme ('dark' or 'light').
+ * @returns
+ */
+export function generateThemeRelatedMetaTagObjects(theme) {
+  return [
+    {
+      name: 'color-scheme',
+      content: theme === 'light' ? 'light dark' : 'dark light',
+    },
+    {
+      name: 'theme-color',
+      content: theme === 'dark' ? '#111' : '#F2F2F2',
+    },
+  ];
+}
+
+/**
+ * Inject \<meta/> tags at the TOP of the global \<head/> tag.
+ *
+ * @param metaTags - A list of meta tag data to be prepended on the \<head/> element.
+ */
+export function injectMetaTags(metaTags) {
+  metaTags.forEach(metaTag => {
+    let metaTagFromDOM = document.querySelector(`[name='${metaTag.name}']`);
+
+    if (!metaTagFromDOM) {
+      metaTagFromDOM = document.createElement('meta');
+      metaTagFromDOM.name = metaTag.name;
+      document.head.prepend(metaTagFromDOM);
+    }
+
+    metaTagFromDOM.content = metaTag.content;
+  });
+}

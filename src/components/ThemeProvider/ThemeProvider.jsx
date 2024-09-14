@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import GothamBoldItalic from '~/assets/fonts/gotham-bold-italic.woff2';
 import GothamBold from '~/assets/fonts/gotham-bold.woff2';
 import GothamBookItalic from '~/assets/fonts/gotham-book-italic.woff2';
@@ -6,9 +6,9 @@ import GothamBook from '~/assets/fonts/gotham-book.woff2';
 import GothamMediumItalic from '~/assets/fonts/gotham-medium-italic.woff2';
 import GothamMedium from '~/assets/fonts/gotham-medium.woff2';
 import IPAGothic from '~/assets/fonts/ipa-gothic.woff2';
+import { useInjectThemeStylesToGlobalTags } from '~/hooks/useInjectThemeStylesToGlobalTags';
 import { classes, media } from '~/utils/style';
 import { themes, tokens } from './theme';
-
 export const ThemeContext = createContext({});
 
 export function useTheme() {
@@ -164,6 +164,8 @@ export const ThemeProvider = ({
   const isRootProvider = !parentTheme.theme;
   const [theme, setTheme] = useState(getInitialTheme() === 'dark' ? 'dark' : 'light');
 
+  useInjectThemeStylesToGlobalTags(theme, themeStyles);
+
   const toggleTheme = () => {
     if (theme === 'light') {
       setTheme('dark');
@@ -176,36 +178,6 @@ export const ThemeProvider = ({
   //   typeof localStorage !== 'undefined' &&
   //     localStorage.setItem('jd-portfolio-theme', theme);
   // }, [theme]);
-
-  // I need to manually inject the style, meta tags, and body attribute here since the react-helmet package does
-  // not inject style, and meta tags at the top of the <head> tag (they are always injected at the bottom). This
-  //  is needed in order for most of the css to work since the "themeStyles" variable holds the base css of the project.
-
-  // There is another package that injects the style, and meta tags at the top of the <head> tag using the
-  // react-helmet-stuff package, but I'm getting this error 'Warning: Using UNSAFE_componentWillMount in strict mode is
-  // not recommended' (the same error when using the react-helmet package). To get rid of the error, I used the
-  // react-helmet-async package, but the react-helmet-async package does not inject the style, and meta tags above the
-  // <head> tag, that's why I opted to just manually inject these tags below:
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.type = 'text/css';
-    style.innerHTML = themeStyles;
-
-    const metaColorScheme = document.createElement('meta');
-    metaColorScheme.name = 'color-scheme';
-    metaColorScheme.content = theme === 'light' ? 'light dark' : 'dark light';
-
-    const metaThemeColor = document.createElement('meta');
-    metaThemeColor.name = 'theme-color';
-    metaThemeColor.content = theme === 'dark' ? '#111' : '#F2F2F2';
-
-    document.head.prepend(style);
-    document.head.prepend(metaColorScheme);
-    document.head.prepend(metaThemeColor);
-
-    const body = document.getElementsByTagName('body')[0];
-    body.setAttribute('data-theme', theme);
-  }, [theme, themeStyles]);
 
   return (
     <ThemeContext.Provider
