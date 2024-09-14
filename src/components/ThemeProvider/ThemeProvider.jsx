@@ -166,11 +166,7 @@ export const ThemeProvider = ({
   }, [theme]);
 
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
+    setTheme(theme => (theme === 'dark' ? 'light' : 'dark'));
   };
 
   return (
