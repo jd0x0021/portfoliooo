@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '~/components/Icon';
 import { Monogram } from '~/components/Monogram';
 import { useTheme } from '~/components/ThemeProvider';
@@ -20,7 +20,6 @@ export const Navbar = () => {
   const [target, setTarget] = useState();
   const { theme } = useTheme();
   const location = useLocation();
-  const navigate = useNavigate();
   const windowSize = useWindowSize();
   const headerRef = useRef();
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
@@ -113,7 +112,7 @@ export const Navbar = () => {
       document.removeEventListener('scroll', handleInversion);
       resetNavTheme();
     };
-  }, [theme, windowSize]);
+  }, [theme, windowSize, location.key]);
 
   // Check if a nav item should be active
   const getCurrent = (url = '') => {
@@ -132,9 +131,8 @@ export const Navbar = () => {
     setTarget(null);
 
     if (hash && location.pathname === '/') {
-      console.log(hash);
       setTarget(`#${hash}`);
-      // event.preventDefault();
+      event.preventDefault();
     }
   };
 
