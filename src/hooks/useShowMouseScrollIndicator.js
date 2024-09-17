@@ -8,6 +8,12 @@ import { useEffect, useState } from 'react';
  * @param sectionRef - the current section to show/hide the mouse scroll indicator.
  */
 export function useShowMouseScrollIndicator(sectionRef) {
+  if (!sectionRef) {
+    throw new Error(
+      `There are no ref provided on the ${useShowMouseScrollIndicator.name} hook.`
+    );
+  }
+
   const [showMouseScrollIndicator, setShowMouseScrollIndicator] = useState(false);
 
   useEffect(() => {
