@@ -10,20 +10,24 @@ import config from '~/config.json';
 import { useInterval } from '~/hooks/useInterval';
 import { usePrevious } from '~/hooks/usePrevious';
 import { useScrollToHash } from '~/hooks/useScrollToHash';
+import { useShowMouseScrollIndicator } from '~/hooks/useShowMouseScrollIndicator';
 import { cssProps } from '~/utils/style';
 import styles from './intro.module.css';
 
-export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
+export function Intro({ id, sectionRef, ...rest }) {
   const { theme } = useTheme();
   const { disciplines } = config;
   const [disciplineIndex, setDisciplineIndex] = useState(0);
+
   const prevTheme = usePrevious(theme);
   const introLabel = [disciplines.slice(0, -1).join(', '), disciplines.slice(-1)[0]].join(
     ', and '
   );
   const currentDiscipline = disciplines.find((item, index) => index === disciplineIndex);
   const titleId = `${id}-title`;
+
   const scrollToHash = useScrollToHash();
+  const showMouseScrollIndicator = useShowMouseScrollIndicator(sectionRef);
 
   useInterval(
     () => {
@@ -105,7 +109,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
               href="/#project-1"
               className={styles.scrollIndicator}
               data-status={status}
-              data-hidden={scrollIndicatorHidden}
+              data-hidden={showMouseScrollIndicator}
               onClick={handleScrollClick}
             >
               <VisuallyHidden>Scroll to projects</VisuallyHidden>
@@ -114,7 +118,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
               href="/#project-1"
               className={styles.mobileScrollIndicator}
               data-status={status}
-              data-hidden={scrollIndicatorHidden}
+              data-hidden={showMouseScrollIndicator}
               onClick={handleScrollClick}
             >
               <VisuallyHidden>Scroll to projects</VisuallyHidden>

@@ -126,7 +126,6 @@ export const meta = () => {
 function App() {
   ////
   const [visibleSections, setVisibleSections] = useState([]);
-  const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
   const projects = useRef();
   const details = useRef();
@@ -164,22 +163,12 @@ function App() {
       { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
     );
 
-    const indicatorObserver = new IntersectionObserver(
-      ([entry]) => {
-        setScrollIndicatorHidden(!entry.isIntersecting);
-      },
-      { rootMargin: '-100% 0px 0px 0px' }
-    );
-
     sections.forEach(section => {
       sectionObserver.observe(section.current);
     });
 
-    indicatorObserver.observe(intro.current);
-
     return () => {
       sectionObserver.disconnect();
-      indicatorObserver.disconnect();
     };
   }, [visibleSections]);
   ////
@@ -228,11 +217,7 @@ function App() {
             </Suspense>
           ) : null}
 
-          <Intro
-            id="intro"
-            sectionRef={intro}
-            scrollIndicatorHidden={scrollIndicatorHidden}
-          />
+          <Intro id="intro" sectionRef={intro} />
 
           <Projects
             id="projects"
