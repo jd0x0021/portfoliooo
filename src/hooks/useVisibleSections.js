@@ -32,6 +32,12 @@ export function useVisibleSections(sections) {
     );
 
     sections.forEach(section => {
+      if (!section) {
+        throw new Error(
+          `No section is provided when accessing section.current in the ${useVisibleSections.name} hook.`
+        );
+      }
+
       sectionObserver.observe(section.current);
     });
 
