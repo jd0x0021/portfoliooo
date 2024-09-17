@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Contact } from '~/components/Contact';
 import { Footer } from '~/components/Footer';
@@ -11,6 +11,7 @@ import { VisuallyHidden } from '~/components/VisuallyHidden';
 import config from '~/config.json';
 import { useHydrated } from '~/hooks/useHydrated';
 import { useScrollToHash } from '~/hooks/useScrollToHash';
+import { useVisibleSections } from '~/hooks/useVisibleSections';
 import { Error } from '~/layouts/Error';
 import { Navbar } from '~/layouts/Navbar';
 import { baseMeta } from '~/utils/meta';
@@ -125,11 +126,12 @@ export const meta = () => {
 
 function App() {
   ////
-  const [visibleSections, setVisibleSections] = useState([]);
   const intro = useRef();
   const projects = useRef();
   const details = useRef();
   const contact = useRef();
+  const visibleSections = useVisibleSections([intro, projects, details, contact]);
+
   const isHydrated = useHydrated();
   const scrollToHash = useScrollToHash();
   const location = useLocation();
@@ -145,32 +147,6 @@ function App() {
       scrollToHash(location.hash);
     }
   }, [location.hash]);
-
-  useEffect(() => {
-    const sections = [intro, projects, details, contact];
-
-    const sectionObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const section = entry.target;
-            observer.unobserve(section);
-            if (visibleSections.includes(section)) return;
-            setVisibleSections(prevSections => [...prevSections, section]);
-          }
-        });
-      },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
-    );
-
-    sections.forEach(section => {
-      sectionObserver.observe(section.current);
-    });
-
-    return () => {
-      sectionObserver.disconnect();
-    };
-  }, [visibleSections]);
   ////
 
   ////

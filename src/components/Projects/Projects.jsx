@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import gamestackTexture2Large from '~/assets/gamestack-list-large.jpg';
 import gamestackTexture2Placeholder from '~/assets/gamestack-list-placeholder.jpg';
 import gamestackTexture2 from '~/assets/gamestack-list.jpg';
@@ -14,39 +14,14 @@ import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
 import { ProjectSummary } from '~/components/ProjectSummary';
 import { Section } from '~/components/Section';
 import { Transition } from '~/components/Transition';
+import { useVisibleSections } from '~/hooks/useVisibleSections';
 
 export const Projects = ({ id, visible, sectionRef }) => {
-  const [visibleSections, setVisibleSections] = useState([]);
-
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
 
-  useEffect(() => {
-    const sections = [projectOne, projectTwo, projectThree];
-
-    const sectionObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const section = entry.target;
-            observer.unobserve(section);
-            if (visibleSections.includes(section)) return;
-            setVisibleSections(prevSections => [...prevSections, section]);
-          }
-        });
-      },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
-    );
-
-    sections.forEach(section => {
-      sectionObserver.observe(section.current);
-    });
-
-    return () => {
-      sectionObserver.disconnect();
-    };
-  }, [visibleSections]);
+  const visibleSections = useVisibleSections([projectOne, projectTwo, projectThree]);
 
   return (
     <Section as="section" ref={sectionRef} id={id} tabIndex={-1}>
