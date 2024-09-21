@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useRouteError } from 'react-router-dom';
 import { Contact } from '~/components/Contact';
 import { Footer } from '~/components/Footer';
 import { Intro } from '~/components/Intro';
@@ -71,10 +71,7 @@ export const loader = async ({ request, context }) => {
   );
 };
 
-export function ErrorBoundary() {
-  // const error = useRouteError();
-  const error = {};
-
+export function AppErrorBoundary() {
   return (
     <html lang="en">
       <head>
@@ -85,7 +82,7 @@ export function ErrorBoundary() {
         <style dangerouslySetInnerHTML={{ __html: themeStyles }} />
       </head>
       <body data-theme="dark">
-        <Error error={error} />
+        <Error error={useRouteError()} />
       </body>
     </html>
   );
@@ -124,7 +121,7 @@ export const meta = () => {
   });
 };
 
-function App() {
+export function App() {
   ////
   const intro = useRef();
   const projects = useRef();
@@ -219,5 +216,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;
