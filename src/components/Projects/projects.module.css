@@ -1,3 +1,12 @@
+.projects {
+  padding-top: 60px;
+
+  @media (--mediaMobile) {
+    padding-top: var(--space4XL);
+    overflow-x: hidden;
+  }
+}
+
 .title {
   transition-property: opacity;
   transition-timing-function: var(--bezierFastoutSlowin);

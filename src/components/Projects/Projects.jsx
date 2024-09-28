@@ -31,8 +31,8 @@ export const Projects = ({ id }) => {
   ]);
 
   return (
-    <>
-      <Section as="section" ref={projectSectionHeader} id={id} tabIndex={-1}>
+    <div id={id} className={styles.projects} tabIndex={-1}>
+      <Section as="section" ref={projectSectionHeader} tabIndex={-1}>
         <Heading
           level={2}
           as="h2"
@@ -111,6 +111,6 @@ export const Projects = ({ id }) => {
           ],
         }}
       />
-    </>
+    </div>
   );
 };
