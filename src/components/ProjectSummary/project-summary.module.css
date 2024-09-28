@@ -224,7 +224,7 @@
   transition-property: opacity;
   transition-timing-function: var(--bezierFastoutSlowin);
   transition-duration: var(--durationXL);
-  transition-delay: var(--durationM);
+  transition-delay: var(--durationL);
   opacity: 0;
 
   @media (--mediaUseMotion) {

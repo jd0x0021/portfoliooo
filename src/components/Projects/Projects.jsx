@@ -11,23 +11,44 @@ import sliceTexture from '~/assets/slice-app.jpg';
 import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
 import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
+import { Heading } from '~/components/Heading';
 import { ProjectSummary } from '~/components/ProjectSummary';
 import { Section } from '~/components/Section';
 import { Transition } from '~/components/Transition';
 import { useVisibleSections } from '~/hooks/useVisibleSections';
+import styles from './projects.module.css';
 
 export const Projects = ({ id, visible, sectionRef }) => {
+  const projectSectionHeader = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
 
-  const visibleSections = useVisibleSections([projectOne, projectTwo, projectThree]);
+  const visibleSections = useVisibleSections([
+    projectSectionHeader,
+    projectOne,
+    projectTwo,
+    projectThree,
+  ]);
 
   return (
     <Section as="section" ref={sectionRef} id={id} tabIndex={-1}>
       <Transition in={visible} timeout={0}>
         {({ status }) => (
           <>
+            <div ref={projectSectionHeader}>
+              <Heading
+                level={2}
+                as="h2"
+                data-status={status}
+                data-visible={visibleSections.includes(projectSectionHeader.current)}
+                data-align="center"
+                className={styles.title}
+              >
+                Here are some of the projects I've built. Feel free to check them out.
+              </Heading>
+            </div>
+
             <ProjectSummary
               id="project-1"
               sectionRef={projectOne}
