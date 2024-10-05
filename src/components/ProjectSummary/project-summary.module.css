@@ -255,13 +255,14 @@
   }
 }
 
-.button {
+.buttonWrapper {
   transition-property: opacity;
   transition-timing-function: var(--bezierFastoutSlowin);
   transition-duration: var(--durationXL);
   transition-delay: var(--durationXL);
   transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
+  flex-grow: 1;
 
   @media (--mediaUseMotion) {
     transition-property: transform, opacity;
@@ -272,4 +273,13 @@
     transform: none;
     opacity: 1;
   }
+}
+
+.button {
+  width: 100%;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: var(--spaceS);
 }

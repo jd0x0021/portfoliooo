@@ -45,8 +45,14 @@ export const Projects = ({ id }) => {
         index={1}
         title="Designing the future of education"
         description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="#"
+        sourceCodeBtn={{
+          text: 'Source Code',
+          link: '#',
+        }}
+        liveViewBtn={{
+          text: 'Live View',
+          link: '#',
+        }}
         model={{
           type: 'laptop',
           alt: 'Smart Sparrow lesson builder',
@@ -66,8 +72,14 @@ export const Projects = ({ id }) => {
         index={2}
         title="Designing the future of education"
         description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="#"
+        sourceCodeBtn={{
+          text: 'Source Code',
+          link: '#',
+        }}
+        liveViewBtn={{
+          text: 'Download Link',
+          link: '#',
+        }}
         model={{
           type: 'laptop',
           alt: 'Smart Sparrow lesson builder',
@@ -87,8 +99,14 @@ export const Projects = ({ id }) => {
         index={3}
         title="Biomedical image collaboration"
         description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
-        buttonLink="#"
+        sourceCodeBtn={{
+          text: 'Source Code',
+          link: '#',
+        }}
+        liveViewBtn={{
+          text: 'Download Link',
+          link: '#',
+        }}
         model={{
           type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
