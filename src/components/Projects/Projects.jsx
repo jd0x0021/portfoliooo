@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import parajectWebsitePreview from '~/assets/paraject.jpg';
 import pizzaShopWebsitePreview from '~/assets/pizza-shop.jpg';
 import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
 import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
@@ -69,22 +70,22 @@ export const Projects = ({ id }) => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
+        title="Paraject"
+        description="This project management application tracks and organizes tasks, helping users enhance their productivity and stay focused on the main goal."
         sourceCodeBtn={{
           text: 'Source Code',
-          link: '#',
+          link: 'https://github.com/davedalmao/Paraject',
         }}
         liveViewBtn={{
           text: 'Download Link',
-          link: '#',
+          link: 'https://github.com/davedalmao/Paraject?tab=readme-ov-file#how-to-download',
         }}
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'For Projects - Paraject.',
           textures: [
             {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
+              srcSet: `${parajectWebsitePreview} 1280w, ${parajectWebsitePreview} 2560w`,
               placeholder: sprTexturePlaceholder,
             },
           ],
