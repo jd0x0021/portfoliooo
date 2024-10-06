@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { default as profileImg, default as profileImgLarge } from '~/assets/me.png';
 import profileImgPlaceholder from '~/assets/profile-placeholder.jpg';
+import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
 import { Button } from '~/components/Button';
 import { DecoderText } from '~/components/DecoderText';
 import { Divider } from '~/components/Divider';
@@ -60,8 +61,9 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 secondary
                 className={styles.button}
                 data-visible={visible}
-                href="/contact"
+                href={resume}
                 icon="send"
+                target="_blank"
               >
                 View my Resume
               </Button>
