@@ -1,7 +1,6 @@
 import { useRef } from 'react';
-import sliceTextureLarge from '~/assets/slice-app-large.jpg';
+import pizzaShopWebsitePreview from '~/assets/pizza-shop.jpg';
 import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
-import sliceTexture from '~/assets/slice-app.jpg';
 import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
 import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
@@ -97,22 +96,22 @@ export const Projects = ({ id }) => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
+        title="Crave Co. Pizza"
+        description="A responsive pizza shop website built with Bootstrap. Featuring an intuitive menu, and an embedded Google Maps section."
         sourceCodeBtn={{
           text: 'Source Code',
-          link: '#',
+          link: 'https://github.com/davedalmao/Pizza-Shop',
         }}
         liveViewBtn={{
-          text: 'Download Link',
-          link: '#',
+          text: 'Live View',
+          link: 'https://davedalmao.github.io/Pizza-Shop/',
         }}
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: "I'll take you to the pizza shop (Crave Co. Pizza).",
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
+              srcSet: `${pizzaShopWebsitePreview} 800w, ${pizzaShopWebsitePreview} 1920w`,
               placeholder: sliceTexturePlaceholder,
             },
           ],
