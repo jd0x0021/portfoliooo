@@ -20,19 +20,20 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m John, currently I live in Lorem ipsum dolor sit amet consectetur, adipisicing
-      elit. Quasi, quam.{' '}
-      <Link href="https://www.example.com" target="_blank">
-        Example
-      </Link>
-      . Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, consequatur
-      dicta. Voluptate a, cumque enim praesentium repudiandae, aperiam sint placeat odit
-      architecto iusto inventore culpa, minima labore sapiente asperiores pariatur!
+      I’m John Dave Dalmao, a software engineer with over 3 years of experience in
+      building software solutions. I create well-crafted code at{' '}
+      <Link href="https://www.accenture.com/ph-en" target="_blank">
+        Accenture
+      </Link>{' '}
+      to deliver cohesive & intuitive web solutions.
+    </Text>
+
+    <Text className={styles.description} data-visible={visible} size="l" as="p">
+      I also enjoy discussing about tech and would love to share insights through engaging
+      talks.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga debitis, ullam
-      tempore ad culpa, blanditiis cumque id accusamus harum officiis veritatis nemo
-      tempora dignissimos! Odio unde cupiditate enim laudantium repellendus?
+      The technologies that turned my ideas into reality:
     </Text>
   </Fragment>
 );
