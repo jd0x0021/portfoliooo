@@ -20,7 +20,7 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m John Dave Dalmao, a software engineer with over 3 years of experience in
+      I’m John Dave Dalmao, a software engineer with over 3+ years of experience in
       building software solutions. I create well-crafted code at{' '}
       <Link href="https://www.accenture.com/ph-en" target="_blank">
         Accenture
