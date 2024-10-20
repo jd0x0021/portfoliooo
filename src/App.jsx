@@ -124,9 +124,9 @@ export const meta = () => {
 export function App() {
   ////
   const intro = useRef();
-  const details = useRef();
+  const about = useRef();
   const contact = useRef();
-  const visibleSections = useVisibleSections([intro, details, contact]);
+  const visibleSections = useVisibleSections([intro, about, contact]);
 
   const isHydrated = useHydrated();
   const scrollToHash = useScrollToHash();
@@ -194,9 +194,9 @@ export function App() {
           <Projects id="projects" />
 
           <Profile
-            sectionRef={details}
-            visible={visibleSections.includes(details.current)}
-            id="details"
+            id="about"
+            sectionRef={about}
+            visible={visibleSections.includes(about.current)}
           />
 
           <Contact
