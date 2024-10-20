@@ -5,6 +5,10 @@
   padding: 0.6em 1.1em;
   border-radius: 8px;
   color: color-mix(in lab, oklch(100% 0 0) 80%, transparent);
+
+  &:hover {
+    background-color: #383838;
+  }
 }
 
 .badge img {
