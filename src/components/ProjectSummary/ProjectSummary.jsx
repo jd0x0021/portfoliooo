@@ -1,4 +1,5 @@
 import { Suspense, lazy, useState } from 'react';
+import { Badges } from '~/components/Badges';
 import { Button } from '~/components/Button';
 import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
@@ -28,6 +29,7 @@ export function ProjectSummary({
   sourceCodeBtn,
   liveViewBtn,
   alternate,
+  techStack,
   ...rest
 }) {
   const [focused, setFocused] = useState(false);
@@ -62,7 +64,7 @@ export function ProjectSummary({
     );
   }
 
-  function renderDetails(visible) {
+  function renderDetails(visible, techStack) {
     return (
       <div className={styles.details}>
         <div aria-hidden className={styles.index}>
@@ -88,6 +90,9 @@ export function ProjectSummary({
         <Text className={styles.description} data-visible={visible} as="p">
           {description}
         </Text>
+
+        <Badges badges={techStack} visible={visible} />
+
         <div className={styles.buttonGroup}>
           <div className={styles.buttonWrapper} data-visible={visible}>
             <Button className={styles.button} href={sourceCodeBtn.link}>
@@ -201,14 +206,14 @@ export function ProjectSummary({
             <>
               {!alternate && !isMobile && (
                 <>
-                  {renderDetails(visible)}
+                  {renderDetails(visible, techStack)}
                   {renderPreview(visible)}
                 </>
               )}
               {(alternate || isMobile) && (
                 <>
                   {renderPreview(visible)}
-                  {renderDetails(visible)}
+                  {renderDetails(visible, techStack)}
                 </>
               )}
             </>

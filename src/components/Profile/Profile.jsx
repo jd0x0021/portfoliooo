@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react';
 import { default as profileImg, default as profileImgLarge } from '~/assets/me.png';
 import profileImgPlaceholder from '~/assets/profile-placeholder.jpg';
 import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
+import { Badges } from '~/components/Badges';
+import { skillsBadges } from '~/components/Badges/badgeData';
 import { Button } from '~/components/Button';
 import { DecoderText } from '~/components/DecoderText';
 import { Divider } from '~/components/Divider';
@@ -19,6 +21,7 @@ const ProfileText = ({ visible, titleId }) => (
     <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
+
     <Text className={styles.description} data-visible={visible} size="l" as="p">
       I’m John Dave Dalmao, a software engineer with over 3+ years of experience in
       building software solutions. I create well-crafted code at{' '}
@@ -32,8 +35,9 @@ const ProfileText = ({ visible, titleId }) => (
       I also enjoy discussing about tech and would love to share insights through engaging
       talks.
     </Text>
+
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      The technologies that turned my ideas into reality:
+      Here are a few technologies I’ve been working with recently:
     </Text>
   </Fragment>
 );
@@ -58,6 +62,9 @@ export const Profile = ({ id, visible, sectionRef }) => {
           <div className={styles.content} ref={nodeRef}>
             <div className={styles.column}>
               <ProfileText visible={visible} titleId={titleId} />
+
+              <Badges badges={skillsBadges} visible={visible} />
+
               <Button
                 secondary
                 className={styles.button}

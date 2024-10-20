@@ -5,6 +5,11 @@ import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
 import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
 import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
+import {
+  projectOneBadges,
+  projectThreeBadges,
+  projectTwoBadges,
+} from '~/components/Badges/badgeData';
 import { Heading } from '~/components/Heading';
 import { ProjectSummary } from '~/components/ProjectSummary';
 import { Section } from '~/components/Section';
@@ -63,6 +68,7 @@ export const Projects = ({ id }) => {
             },
           ],
         }}
+        techStack={projectOneBadges}
       />
 
       <ProjectSummary
@@ -90,6 +96,7 @@ export const Projects = ({ id }) => {
             },
           ],
         }}
+        techStack={projectTwoBadges}
       />
 
       <ProjectSummary
@@ -117,6 +124,7 @@ export const Projects = ({ id }) => {
             },
           ],
         }}
+        techStack={projectThreeBadges}
       />
     </div>
   );
