@@ -1,8 +1,13 @@
+/*==================================================================================================
+  I need to apply a specific css rule to center the dialog modal's content because the modal's
+  ::backdrop is affected by the style reset in reset.module.css. If I remove that reset style
+  (that's affecting the dialog modal's backdrop), some elements are going to get affected. 
+==================================================================================================*/
 .dialogModal {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999; /* Ensure it's above other content */
+  z-index: 9999;
 }
 
 .dialogModal {
