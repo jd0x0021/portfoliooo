@@ -10,37 +10,43 @@ import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
 import { Image } from '~/components/Image';
 import { Link } from '~/components/Link';
+import { Modal } from '~/components/Modal';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
 import { Transition } from '~/components/Transition';
 import { media } from '~/utils/style';
 import styles from './profile.module.css';
 
-const ProfileText = ({ visible, titleId }) => (
-  <Fragment>
-    <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
-      <DecoderText text="Hi there" start={visible} delay={500} />
-    </Heading>
+const ProfileText = ({ visible, titleId }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m John Dave Dalmao, a software engineer with over 3+ years of experience in
-      building software solutions. I create well-crafted code at{' '}
-      <Link href="https://www.accenture.com/ph-en" target="_blank">
-        Accenture
-      </Link>{' '}
-      to deliver cohesive & intuitive web solutions.
-    </Text>
+  return (
+    <Fragment>
+      <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
+        <DecoderText text="Hi there" start={visible} delay={500} />
+      </Heading>
 
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I also enjoy discussing about tech and would love to share insights through engaging
-      talks.
-    </Text>
+      <Text className={styles.description} data-visible={visible} size="l" as="p">
+        I’m John Dave Dalmao, a software engineer with over 3+ years of experience in
+        building software solutions. I create well-crafted code at{' '}
+        <Link href="https://www.accenture.com/ph-en" target="_blank">
+          Accenture
+        </Link>{' '}
+        to deliver cohesive & intuitive web solutions.
+      </Text>
 
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      Here are a few technologies I’ve been working with recently:
-    </Text>
-  </Fragment>
-);
+      <Text className={styles.description} data-visible={visible} size="l" as="p">
+        I also enjoy discussing about tech and would love to share insights through{' '}
+        <Link onClick={() => setIsOpen(true)}>engaging talks</Link>.
+      </Text>
+
+      <Text className={styles.description} data-visible={visible} size="l" as="p">
+        Here are a few technologies I’ve been working with recently:
+      </Text>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </Fragment>
+  );
+};
 
 export const Profile = ({ id, visible, sectionRef }) => {
   const [focused, setFocused] = useState(false);

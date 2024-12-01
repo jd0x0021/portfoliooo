@@ -1,0 +1,40 @@
+.dialogModal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Ensure it's above other content */
+}
+
+.dialogModal {
+  &::backdrop {
+    --backdrop: blur(24px) saturate(120%);
+
+    position: fixed;
+    inset: 0;
+    background: color-mix(in lab, var(--background) 70%, transparent);
+    /* transform: translate3d(0, -100%, 0); */
+    transition-property: background;
+    transition-duration: var(--durationL);
+    transition-timing-function: var(--bezierFastoutSlowin);
+    /* display: none; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    -webkit-backdrop-filter: var(--backdrop);
+    backdrop-filter: var(--backdrop);
+    /* display: flex; */
+    /* box-sizing: content-box;
+    margin: 0;
+    min-width: 0; */
+    /* margin: auto; */
+
+    @media (--mediaUseMotion) {
+      transition-property: transform, background;
+    }
+
+    &[data-visible='true'] {
+      transform: none;
+      background-color: red;
+    }
+  }
+}
