@@ -1,0 +1,22 @@
+.navigation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.emblaViewport {
+  overflow: hidden;
+  position: relative;
+}
+
+.emblaContainer {
+  display: flex;
+}
+
+.emblaSlide {
+  flex: 0 0 100%;
+  min-width: 0;
+}

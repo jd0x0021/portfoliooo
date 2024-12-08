@@ -1,8 +1,13 @@
 import { createPortal } from 'react-dom';
+import { default as certificateOfAppreciation } from '~/assets/img/software-engineer-portfolio-seminar/certificate-of-appreciation.png';
+import { default as seminarPoster } from '~/assets/img/software-engineer-portfolio-seminar/seminar-poster.png';
+import { ImageSlider } from '~/components/ImageSlider';
 import { tokens } from '~/components/ThemeProvider/theme';
 import { Transition } from '~/components/Transition';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import styles from './modal.module.css';
+
+const IMAGES = [seminarPoster, certificateOfAppreciation];
 
 export const Modal = ({ isOpen, onClose }) => {
   return createPortal(
@@ -17,6 +22,8 @@ export const Modal = ({ isOpen, onClose }) => {
             })}
           >
             <button onClick={onClose}>close</button>
+
+            <ImageSlider imageUrls={IMAGES} />
           </div>
         </div>
       )}
