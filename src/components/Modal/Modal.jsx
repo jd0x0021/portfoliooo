@@ -1,28 +1,26 @@
-import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { tokens } from '~/components/ThemeProvider/theme';
+import { Transition } from '~/components/Transition';
+import { cssProps, msToNum, numToMs } from '~/utils/style';
 import styles from './modal.module.css';
 
 export const Modal = ({ isOpen, onClose }) => {
-  const dialogRef = useRef(null);
-
-  useEffect(() => {
-    if (!dialogRef.current) {
-      return;
-    }
-
-    if (isOpen) {
-      dialogRef.current.showModal();
-    } else {
-      dialogRef.current.close();
-    }
-  }, [isOpen]);
-
   return createPortal(
-    <dialog ref={dialogRef} className={styles.dialogModal} data-visible={isOpen}>
-      <div>Modal</div>
-      <br></br>
-      <button onClick={onClose}>Close</button>
-    </dialog>,
+    <Transition unmount in={isOpen} timeout={msToNum(tokens.base.durationL)}>
+      {({ visible, nodeRef }) => (
+        <div className={styles.modal} data-visible={visible} ref={nodeRef}>
+          <div
+            className={styles.modalContent}
+            data-visible={visible}
+            style={cssProps({
+              transitionDelay: numToMs(Number(msToNum(tokens.base.durationS)) + 0 * 50),
+            })}
+          >
+            <button onClick={onClose}>close</button>
+          </div>
+        </div>
+      )}
+    </Transition>,
     document.getElementById('modal')
   );
 };

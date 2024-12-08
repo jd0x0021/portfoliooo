@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { default as profileImg, default as profileImgLarge } from '~/assets/me.png';
 import profileImgPlaceholder from '~/assets/profile-placeholder.jpg';
 import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
@@ -21,7 +21,7 @@ const ProfileText = ({ visible, titleId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Fragment>
+    <>
       <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
         <DecoderText text="Hi there" start={visible} delay={500} />
       </Heading>
@@ -43,8 +43,9 @@ const ProfileText = ({ visible, titleId }) => {
       <Text className={styles.description} data-visible={visible} size="l" as="p">
         Here are a few technologies I’ve been working with recently:
       </Text>
+
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </Fragment>
+    </>
   );
 };
 

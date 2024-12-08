@@ -1,45 +1,60 @@
-/*==================================================================================================
-  I need to apply a specific css rule to center the dialog modal's content because the modal's
-  ::backdrop is affected by the style reset in reset.module.css. If I remove that reset style
-  (that's affecting the dialog modal's backdrop), some elements are going to get affected. 
-==================================================================================================*/
-.dialogModal {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
+.modal {
+  z-index: 999;
+  --backdrop: blur(24px) saturate(120%);
+
+  position: fixed;
+  inset: 0;
+  background: color-mix(in lab, var(--background) 70%, transparent);
+  transform: translate3d(0, -100%, 0);
+  transition-property: background;
+  transition-duration: var(--durationL);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: var(--backdrop);
+  backdrop-filter: var(--backdrop);
+  display: flex;
+
+  @media (--mediaUseMotion) {
+    transition-property: transform, background;
+  }
+
+  &[data-visible='true'] {
+    transform: none;
+  }
 }
 
-.dialogModal {
-  &::backdrop {
-    --backdrop: blur(24px) saturate(120%);
+.modalContent {
+  background-color: white;
+  color: red;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  position: relative;
+  z-index: 1001; /* Ensure modal content is above the overlay */
 
-    position: fixed;
-    inset: 0;
-    background: color-mix(in lab, var(--background) 70%, transparent);
-    /* transform: translate3d(0, -100%, 0); */
-    transition-property: background;
-    transition-duration: var(--durationL);
-    transition-timing-function: var(--bezierFastoutSlowin);
-    /* display: none; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    -webkit-backdrop-filter: var(--backdrop);
-    backdrop-filter: var(--backdrop);
-    /* display: flex; */
-    /* box-sizing: content-box;
-    margin: 0;
-    min-width: 0; */
-    /* margin: auto; */
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--durationXL);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-delay: var(--transitionDelay);
+  top: calc(var(--spaceM) * -1);
 
-    @media (--mediaUseMotion) {
-      transition-property: transform, background;
+  @media (--mediaUseMotion) {
+    transition-property: transform, opacity;
+    transform: translate3d(0, calc(var(--spaceXL) * -1), 0);
+  }
+
+  @media (--mediaUseMotion) {
+    &::after {
+      transition: transform var(--durationM) var(--bezierFastoutSlowin);
     }
+  }
 
-    &[data-visible='true'] {
-      transform: none;
-      background-color: red;
-    }
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
   }
 }
