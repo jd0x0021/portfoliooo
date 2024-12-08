@@ -1,5 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
+import { Icon } from '~/components/Icon';
 import styles from './image-slider.module.css';
 
 export const ImageSlider = ({ imageUrls }) => {
@@ -35,11 +36,11 @@ export const ImageSlider = ({ imageUrls }) => {
         </div>
 
         <div className={styles.navigation}>
-          <button className="embla__prev" onClick={scrollToPreviousSlide}>
-            Prev
+          <button onClick={scrollToPreviousSlide}>
+            <Icon icon={'chevron-left'} />
           </button>
-          <button className="embla__next" onClick={scrollToNextSlide}>
-            Next
+          <button onClick={scrollToNextSlide}>
+            <Icon icon={'chevron-right'} />
           </button>
         </div>
       </div>
