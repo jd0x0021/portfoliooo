@@ -29,12 +29,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  color: red;
+
+  background-color: #344148;
+  color: color-mix(in lab, oklch(100% 0 0) 80%, transparent);
+
   padding: 20px;
   border-radius: 8px;
   max-width: 650px;
   width: 80%;
+
   text-align: center;
   position: relative;
   z-index: 1001; /* Ensure modal content is above the overlay */
