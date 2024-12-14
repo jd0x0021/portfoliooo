@@ -3,6 +3,7 @@ import { default as certificateOfAppreciation } from '~/assets/img/software-engi
 import { default as seminarPoster } from '~/assets/img/software-engineer-portfolio-seminar/seminar-poster.png';
 import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
+import { Icon } from '~/components/Icon';
 import { ImageSlider } from '~/components/ImageSlider';
 import { Link } from '~/components/Link';
 import { Text } from '~/components/Text';
@@ -45,7 +46,9 @@ export const Modal = ({ isOpen, onClose }) => {
                 </Heading>
               </div>
 
-              <button onClick={onClose}>close</button>
+              <button onClick={onClose}>
+                <Icon className={styles.closeIcon} icon="close" />
+              </button>
             </div>
 
             <ImageSlider imageUrls={IMAGES} />

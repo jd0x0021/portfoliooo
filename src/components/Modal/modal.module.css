@@ -103,3 +103,10 @@
     opacity: 1;
   }
 }
+
+.closeIcon {
+  --iconSize: var(--spaceXL);
+  fill: var(--textBody);
+  width: var(--iconSize);
+  height: var(--iconSize);
+}
