@@ -1,6 +1,8 @@
 import { createPortal } from 'react-dom';
 import { default as certificateOfAppreciation } from '~/assets/img/software-engineer-portfolio-seminar/certificate-of-appreciation.png';
 import { default as seminarPoster } from '~/assets/img/software-engineer-portfolio-seminar/seminar-poster.png';
+import { Divider } from '~/components/Divider';
+import { Heading } from '~/components/Heading';
 import { ImageSlider } from '~/components/ImageSlider';
 import { Link } from '~/components/Link';
 import { Text } from '~/components/Text';
@@ -23,7 +25,28 @@ export const Modal = ({ isOpen, onClose }) => {
               transitionDelay: numToMs(Number(msToNum(tokens.base.durationS)) + 0 * 50),
             })}
           >
-            <button onClick={onClose}>close</button>
+            <div className={styles.header}>
+              <div>
+                <div className={styles.tag} aria-hidden>
+                  <Divider
+                    notchWidth="64px"
+                    notchHeight="8px"
+                    collapsed={!visible}
+                    collapseDelay={1000}
+                  />
+
+                  <div className={styles.tagText} data-visible={visible}>
+                    November 12, 2022
+                  </div>
+                </div>
+
+                <Heading className={styles.title} data-visible={visible} level={4}>
+                  Setting up your dev portfolio
+                </Heading>
+              </div>
+
+              <button onClick={onClose}>close</button>
+            </div>
 
             <ImageSlider imageUrls={IMAGES} />
 
