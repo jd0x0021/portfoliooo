@@ -38,7 +38,6 @@
   max-width: 650px;
   width: 80%;
 
-  text-align: center;
   position: relative;
   z-index: 1001; /* Ensure modal content is above the overlay */
 
@@ -64,4 +63,9 @@
     opacity: 1;
     transform: none;
   }
+}
+
+.description {
+  color: color-mix(in lab, oklch(100% 0 0) 80%, transparent);
+  margin-bottom: var(--spaceM);
 }
