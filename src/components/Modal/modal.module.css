@@ -1,5 +1,5 @@
 .modal {
-  z-index: 999;
+  z-index: var(--zIndex4);
   --backdrop: blur(24px) saturate(120%);
 
   position: fixed;
@@ -36,14 +36,11 @@
   max-width: 650px;
   width: 80%;
 
-  z-index: 1001; /* Ensure modal content is above the overlay */
-
   opacity: 0;
   transition-property: opacity;
   transition-duration: var(--durationXL);
   transition-timing-function: var(--bezierFastoutSlowin);
   transition-delay: var(--transitionDelay);
-  top: calc(var(--spaceM) * -1);
 
   clip-path: polygon(
     0px 0%,
