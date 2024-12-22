@@ -71,7 +71,7 @@ export const Modal = ({ isOpen, onClose }) => {
                     notchWidth="64px"
                     notchHeight="8px"
                     collapsed={!visible}
-                    collapseDelay={1000}
+                    collapseDelay={420}
                   />
 
                   <div className={styles.tagText} data-visible={visible}>
