@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { default as certificateOfAppreciation } from '~/assets/img/software-engineer-portfolio-seminar/certificate-of-appreciation.png';
 import { default as seminarPoster } from '~/assets/img/software-engineer-portfolio-seminar/seminar-poster.png';
@@ -15,6 +16,32 @@ import styles from './modal.module.css';
 const IMAGES = [seminarPoster, certificateOfAppreciation];
 
 export const Modal = ({ isOpen, onClose }) => {
+  /**
+   * Close the modal when we press the 'Esc' key.
+   *
+   * @param {React.KeyboardEvent} event
+   */
+  const handleEscKeyPress = event => {
+    if (event.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  /**
+   * The reason we add the event listener to the global window object instead of directly on
+   * the ref of the modal element is because we want the Esc key to trigger the modal's closing
+   * action no matter where the focus currently is — even if the modal content isn't focused.
+   */
+  useEffect(() => {
+    if (isOpen) {
+      window.addEventListener('keydown', handleEscKeyPress);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleEscKeyPress);
+    };
+  }, [isOpen]);
+
   return createPortal(
     <Transition unmount in={isOpen} timeout={msToNum(tokens.base.durationL)}>
       {({ visible, nodeRef }) => (
