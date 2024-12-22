@@ -18,13 +18,24 @@ export const Modal = ({ isOpen, onClose }) => {
   return createPortal(
     <Transition unmount in={isOpen} timeout={msToNum(tokens.base.durationL)}>
       {({ visible, nodeRef }) => (
-        <div className={styles.modal} data-visible={visible} ref={nodeRef}>
+        <div
+          className={styles.modal}
+          data-visible={visible}
+          ref={nodeRef}
+          onClick={onClose}
+        >
           <div
             className={styles.modalContent}
             data-visible={visible}
             style={cssProps({
               transitionDelay: numToMs(Number(msToNum(tokens.base.durationS)) + 0 * 50),
             })}
+            onClick={event => {
+              // This will prevent the click event from reaching (bubbling up) to the parent
+              // element, so that the parent element's onClick event will not get triggered.
+              // (Ensuring the modal doesn't close when interacting with the modal's content)
+              event.stopPropagation();
+            }}
           >
             <div className={styles.header}>
               <div>
