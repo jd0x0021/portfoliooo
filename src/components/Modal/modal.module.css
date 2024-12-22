@@ -53,6 +53,7 @@
     0% 0px
   );
 
+  /* add border to a clipped corner https://stackoverflow.com/a/62485187/11565087 */
   --grad: transparent 49.5%, var(--textBody) 50%;
   --transparent100: transparent 100%, transparent 100%;
 
