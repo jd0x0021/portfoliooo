@@ -31,7 +31,6 @@
   align-items: center;
 
   color: var(--textBody);
-  border: 1px solid var(--textBody);
 
   padding: 20px;
   max-width: 650px;
@@ -45,6 +44,31 @@
   transition-timing-function: var(--bezierFastoutSlowin);
   transition-delay: var(--transitionDelay);
   top: calc(var(--spaceM) * -1);
+
+  clip-path: polygon(
+    0px 0%,
+    calc(100% - 0px) 0%,
+    100% 0px,
+    100% calc(100% - 60px),
+    calc(100% - 60px) 100%,
+    0px 100%,
+    0% calc(100% - 0px),
+    0% 0px
+  );
+
+  --grad: transparent 49.5%, var(--textBody) 50%;
+  --transparent100: transparent 100%, transparent 100%;
+
+  background: linear-gradient(to top right, var(--transparent100)) top right,
+    linear-gradient(to top left, var(--transparent100)) top left,
+    linear-gradient(to bottom right, var(--grad)) bottom right,
+    linear-gradient(to bottom left, var(--transparent100)) bottom left, transparent;
+
+  background-size: 60.73px 60.73px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+
+  border: 1px solid var(--textBody);
 
   @media (--mediaUseMotion) {
     transition-property: transform, opacity;
