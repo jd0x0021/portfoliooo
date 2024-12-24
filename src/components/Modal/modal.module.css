@@ -32,7 +32,7 @@
 
   color: var(--textBody);
 
-  padding: 20px;
+  padding: 25px;
   max-width: 650px;
   width: 80%;
 
@@ -96,11 +96,11 @@
 }
 
 .tag {
-  margin-bottom: 20px;
   display: grid;
   grid-template-columns: var(--space4XL) 1fr;
   gap: 12px;
   align-items: center;
+  margin-bottom: var(--spaceM);
 }
 
 .tagText {

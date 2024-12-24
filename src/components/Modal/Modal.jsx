@@ -79,7 +79,7 @@ export const Modal = ({ isOpen, onClose }) => {
                   </div>
                 </div>
 
-                <Heading className={styles.title} data-visible={visible} level={4}>
+                <Heading className={styles.title} data-visible={visible} level={5}>
                   Setting up your dev portfolio
                 </Heading>
               </div>
