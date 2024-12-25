@@ -98,10 +98,6 @@
   }
 }
 
-.description {
-  margin-bottom: var(--spaceM);
-}
-
 .modalHeader {
   display: flex;
   grid-area: modalHeader;
