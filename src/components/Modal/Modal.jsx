@@ -105,9 +105,11 @@ export const Modal = ({ isOpen, onClose }) => {
                 help them secure a software engineering job.
               </Text>
 
-              <Link href="https://johndavedalmao-12nov2022.pages.dev/" target="_blank">
-                Click here to view the seminar's result.
-              </Link>
+              <Text data-visible={visible} as="p">
+                <Link href="https://johndavedalmao-12nov2022.pages.dev/" target="_blank">
+                  Click here to view the seminar's result.
+                </Link>
+              </Text>
             </div>
           </div>
         </div>
