@@ -64,8 +64,8 @@ export const Modal = ({ isOpen, onClose }) => {
               event.stopPropagation();
             }}
           >
-            <div className={styles.header}>
-              <div>
+            <div className={styles.modalHeader}>
+              <div className={styles.title}>
                 <div className={styles.tag} aria-hidden>
                   <Divider
                     notchWidth="64px"
@@ -89,22 +89,26 @@ export const Modal = ({ isOpen, onClose }) => {
               </button>
             </div>
 
-            <ImageSlider imageUrls={IMAGES} />
+            <div className={styles.imageSlider}>
+              <ImageSlider imageUrls={IMAGES} />
+            </div>
 
-            <Text className={styles.description} data-visible={visible} size="l" as="p">
-              On November 12, 2022, I conducted a seminar at University of Bohol focused
-              on building a software developer portfolio, covering everything from initial
-              setup to deployment.
-            </Text>
+            <div className={styles.modalInfo}>
+              <Text data-visible={visible} size="l" as="p">
+                On November 12, 2022, I conducted a seminar at University of Bohol focused
+                on building a software developer portfolio, covering everything from
+                initial setup to deployment.
+              </Text>
 
-            <Text className={styles.description} data-visible={visible} size="l" as="p">
-              I aimed to guide students in creating an effective portfolio that would help
-              them secure a software engineering job.
-            </Text>
+              <Text data-visible={visible} size="l" as="p">
+                I aimed to guide students in creating an effective portfolio that would
+                help them secure a software engineering job.
+              </Text>
 
-            <Link href="https://johndavedalmao-12nov2022.pages.dev/" target="_blank">
-              Click here to view the seminar's result.
-            </Link>
+              <Link href="https://johndavedalmao-12nov2022.pages.dev/" target="_blank">
+                Click here to view the seminar's result.
+              </Link>
+            </div>
           </div>
         </div>
       )}
