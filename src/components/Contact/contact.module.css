@@ -11,6 +11,10 @@
   @media (--mediaMobile) {
     padding-top: 0;
   }
+
+  @media only screen and (min-width: 3100px) {
+    min-height: 50vh;
+  }
 }
 
 .form {
