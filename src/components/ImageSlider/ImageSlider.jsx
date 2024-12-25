@@ -19,9 +19,8 @@ export const ImageSlider = ({ imageUrls }) => {
       <div className={styles.emblaViewport} ref={emblaRef}>
         <div className={styles.emblaContainer}>
           {imageUrls.map((imageUrl, index) => (
-            <div className={styles.emblaSlide}>
+            <div className={styles.emblaSlide} key={index}>
               <img
-                key={index}
                 src={imageUrl}
                 alt=""
                 style={{
