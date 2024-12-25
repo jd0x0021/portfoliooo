@@ -32,7 +32,12 @@ export const socialLinks = [
   },
   {
     label: 'Github',
-    url: `https://github.com/${config.github}`,
+    url: config.github,
     icon: 'github',
+  },
+  {
+    label: 'LinkedIn',
+    url: config.linkedIn,
+    icon: 'linkedin',
   },
 ];
