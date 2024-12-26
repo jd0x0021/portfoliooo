@@ -70,39 +70,26 @@ export function Intro({ id, sectionRef, ...rest }) {
                 <VisuallyHidden className={styles.label}>
                   {`${config.role} + ${introLabel}`}
                 </VisuallyHidden>
+
                 <span aria-hidden className={styles.row}>
                   <span
                     className={styles.word}
                     data-status={status}
                     style={cssProps({ delay: tokens.base.durationXS })}
                   >
-                    {config.role}
+                    A Creative
                   </span>
                   <span className={styles.line} data-status={status} />
                 </span>
-                <div className={styles.row}>
-                  {disciplines.map(item => (
-                    <Transition
-                      unmount
-                      in={item === currentDiscipline}
-                      timeout={{ enter: 3000, exit: 2000 }}
-                      key={item}
-                    >
-                      {({ status, nodeRef }) => (
-                        <span
-                          aria-hidden
-                          ref={nodeRef}
-                          className={styles.word}
-                          data-plus={true}
-                          data-status={status}
-                          style={cssProps({ delay: tokens.base.durationL })}
-                        >
-                          {item}
-                        </span>
-                      )}
-                    </Transition>
-                  ))}
-                </div>
+
+                <span
+                  aria-hidden
+                  className={styles.word}
+                  data-status={status}
+                  style={cssProps({ delay: tokens.base.durationXS })}
+                >
+                  Software Engineer
+                </span>
               </Heading>
             </header>
             <a
