@@ -1,3 +1,4 @@
+import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
 import config from '../../config.json';
 
 export const navLinks = [
@@ -16,6 +17,10 @@ export const navLinks = [
   {
     label: 'Contact',
     pathname: '/#contact-form',
+  },
+  {
+    label: 'Resume',
+    pathname: resume,
   },
 ];
 

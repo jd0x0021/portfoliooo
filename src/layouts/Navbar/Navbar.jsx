@@ -160,6 +160,7 @@ export const Navbar = () => {
               unstable_viewTransition
               to={pathname}
               key={label}
+              target="_blank"
               data-navbar-item
               className={styles.navLink}
               aria-current={getCurrent(pathname)}
@@ -179,6 +180,7 @@ export const Navbar = () => {
                 unstable_viewTransition
                 to={pathname}
                 key={label}
+                target="_blank"
                 className={styles.mobileNavLink}
                 data-visible={visible}
                 aria-current={getCurrent(pathname)}
