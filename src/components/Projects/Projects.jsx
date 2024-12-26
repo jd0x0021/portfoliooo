@@ -80,11 +80,11 @@ export const Projects = ({ id }) => {
         description="This project management application tracks and organizes tasks, helping users enhance their productivity and stay focused on the main goal."
         sourceCodeBtn={{
           text: 'Source Code',
-          link: 'https://github.com/davedalmao/Paraject',
+          link: 'https://github.com/jd0x0021/Paraject',
         }}
         liveViewBtn={{
           text: 'Download Link',
-          link: 'https://github.com/davedalmao/Paraject?tab=readme-ov-file#how-to-download',
+          link: 'https://github.com/jd0x0021/Paraject?tab=readme-ov-file#how-to-download',
         }}
         model={{
           type: 'laptop',
@@ -108,11 +108,11 @@ export const Projects = ({ id }) => {
         description="A responsive pizza shop website built with Bootstrap. Featuring an intuitive menu, and an embedded Google Maps section."
         sourceCodeBtn={{
           text: 'Source Code',
-          link: 'https://github.com/davedalmao/Pizza-Shop',
+          link: 'https://github.com/jd0x0021/Pizza-Shop',
         }}
         liveViewBtn={{
           text: 'Live View',
-          link: 'https://davedalmao.github.io/Pizza-Shop/',
+          link: 'https://jd0x0021.github.io/Pizza-Shop/',
         }}
         model={{
           type: 'laptop',
