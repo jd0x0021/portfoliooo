@@ -1,5 +1,5 @@
 import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
-import config from '../../config.json';
+import config from '~/config.json';
 
 export const navLinks = [
   {
