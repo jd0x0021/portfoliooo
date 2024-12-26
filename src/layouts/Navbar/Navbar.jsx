@@ -175,10 +175,9 @@ export const Navbar = () => {
         {({ visible, nodeRef }) => (
           <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
             {navLinks.map(({ label, pathname }, index) => (
-              <a
-                // unstable_viewTransition
-                // prefetch="intent"
-                href={pathname}
+              <Link
+                unstable_viewTransition
+                to={pathname}
                 key={label}
                 className={styles.mobileNavLink}
                 data-visible={visible}
@@ -191,7 +190,7 @@ export const Navbar = () => {
                 })}
               >
                 {label}
-              </a>
+              </Link>
             ))}
             <NavbarIcons />
             <ThemeToggle isMobile />
