@@ -163,7 +163,7 @@ export function App() {
 
   useEffect(() => {
     console.info(
-      `\n${config.ascii}\n\n`,
+      `\n\n${config.ascii}\n\n`,
       `Taking a peek huh? Check out the source code: ${config.github}/portfoliooo\n\n`
     );
   }, []);
