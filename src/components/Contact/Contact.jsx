@@ -34,10 +34,6 @@ const sendEmail = (event, form) => {
   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-  console.log('publicKey', publicKey);
-  console.log('serviceId', serviceId);
-  console.log('templateId', templateId);
-
   event.preventDefault();
 
   emailjs
@@ -46,11 +42,11 @@ const sendEmail = (event, form) => {
     })
     .then(result => {
       console.log('Email sent:', result.text);
-      // alert('Message sent successfully!');
+      alert('Message sent successfully!');
     })
     .catch(error => {
       console.error('Error sending email:', error);
-      // alert('Failed to send message.');
+      alert('Failed to send message.');
     });
 };
 
