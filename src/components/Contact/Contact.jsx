@@ -4,7 +4,6 @@ import { Button } from '~/components/Button';
 import { DecoderText } from '~/components/DecoderText';
 import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
-import { Icon } from '~/components/Icon';
 import { Input } from '~/components/Input';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
@@ -27,35 +26,63 @@ const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
 
-const sendEmail = (event, form) => {
-  if (!form.current) return;
+const validateFormInput = formData => {
+  // form data is invalid if it's filled out by a bot
+  if (formData.honey) return false;
 
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  // invalid message
+  if (!formData.message || formData.message.length > MAX_MESSAGE_LENGTH) return false;
 
-  event.preventDefault();
+  // invalid email
+  if (
+    !formData.email ||
+    EMAIL_PATTERN.test(formData.email) ||
+    formData.email.length > MAX_EMAIL_LENGTH
+  ) {
+    return false;
+  }
 
-  emailjs
-    .sendForm(serviceId, templateId, form.current, {
-      publicKey: publicKey,
-    })
-    .then(result => {
-      console.log('Email sent:', result.text);
-      alert('Message sent successfully!');
-    })
-    .catch(error => {
-      console.error('Error sending email:', error);
-      alert('Failed to send message.');
-    });
+  // all validations passed
+  return true;
 };
 
 export const Contact = ({ id, visible, sectionRef }) => {
   const errorRef = useRef();
 
-  const email = useFormInput('');
-  const message = useFormInput('');
+  const formData = {
+    email: useFormInput(''),
+    message: useFormInput(''),
+    honey: useFormInput(''),
+  };
+
   const initDelay = tokens.base.durationS;
+
+  const sendEmail = form => {
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+    emailjs
+      .sendForm(serviceId, templateId, form.current, {
+        publicKey: publicKey,
+      })
+      .then(result => {
+        console.log('Email sent:', result.text);
+        alert('Message sent successfully!');
+      })
+      .catch(error => {
+        console.error('Error sending email:', error);
+        alert('Failed to send message.');
+      });
+  };
+
+  const handleFormSubmit = (form, formData) => {
+    if (!form.current) return;
+
+    if (validateFormInput(formData)) return;
+
+    sendEmail(form);
+  };
 
   return (
     <Section
@@ -72,7 +99,8 @@ export const Contact = ({ id, visible, sectionRef }) => {
             className={styles.form}
             ref={nodeRef}
             onSubmit={e => {
-              sendEmail(e, nodeRef);
+              e.preventDefault();
+              handleFormSubmit(nodeRef, formData);
             }}
           >
             <Heading
@@ -95,6 +123,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               label="Name"
               name="name"
               maxLength={MAX_EMAIL_LENGTH}
+              {...formData.honey}
             />
             <Input
               required
@@ -106,7 +135,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               type="email"
               name="user_email"
               maxLength={MAX_EMAIL_LENGTH}
-              {...email}
+              {...formData.email}
             />
             <Input
               required
@@ -118,7 +147,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               label="Message"
               name="user_message"
               maxLength={MAX_MESSAGE_LENGTH}
-              {...message}
+              {...formData.message}
             />
             <Transition unmount timeout={msToNum(tokens.base.durationM)}>
               {({ status: errorStatus, nodeRef }) => (
