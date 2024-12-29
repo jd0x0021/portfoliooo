@@ -1,3 +1,4 @@
+import emailjs from '@emailjs/browser';
 import { useRef } from 'react';
 import { Button } from '~/components/Button';
 import { DecoderText } from '~/components/DecoderText';
@@ -26,6 +27,29 @@ const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
 
+const sendEmail = (event, form) => {
+  if (!form.current) return;
+
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+  event.preventDefault();
+
+  emailjs
+    .sendForm(serviceId, templateId, form.current, {
+      publicKey: publicKey,
+    })
+    .then(result => {
+      console.log('Email sent:', result.text);
+      alert('Message sent successfully!');
+    })
+    .catch(error => {
+      console.error('Error sending email:', error);
+      alert('Failed to send message.');
+    });
+};
+
 export const Contact = ({ id, visible, sectionRef }) => {
   const errorRef = useRef();
 
@@ -46,8 +70,10 @@ export const Contact = ({ id, visible, sectionRef }) => {
           <form
             // unstable_viewTransition
             className={styles.form}
-            method="post"
             ref={nodeRef}
+            onSubmit={e => {
+              sendEmail(e, nodeRef);
+            }}
           >
             <Heading
               className={styles.title}
@@ -78,7 +104,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               autoComplete="email"
               label="Your email"
               type="email"
-              name="email"
+              name="user_email"
               maxLength={MAX_EMAIL_LENGTH}
               {...email}
             />
@@ -90,7 +116,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               style={getDelay(tokens.base.durationS, initDelay)}
               autoComplete="off"
               label="Message"
-              name="message"
+              name="user_message"
               maxLength={MAX_MESSAGE_LENGTH}
               {...message}
             />
