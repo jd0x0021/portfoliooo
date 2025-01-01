@@ -59,6 +59,7 @@ const resetFormInputFields = formData => {
 export const Contact = ({ id, visible, sectionRef }) => {
   const errorRef = useRef();
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
+  const [formIsSending, setFormIsSending] = useState(false);
   const [formErrors, setFormErrors] = useState(null);
 
   const formData = {
@@ -83,8 +84,11 @@ export const Contact = ({ id, visible, sectionRef }) => {
     }
   };
 
-  const handleFormSubmit = (form, formData) => {
+  const handleFormSubmit = async (form, formData) => {
     if (!form.current) return;
+
+    // show loader (when we submit the contact form)
+    setFormIsSending(true);
 
     const formHasErrors = getFormInputErrors(formData);
 
@@ -92,8 +96,11 @@ export const Contact = ({ id, visible, sectionRef }) => {
       setFormErrors(formHasErrors);
     } else {
       setFormErrors(null);
-      sendEmail(form);
+      await sendEmail(form);
     }
+
+    // hide loader (after contact form is successfully submitted)
+    setFormIsSending(false);
   };
 
   return (
@@ -185,10 +192,10 @@ export const Contact = ({ id, visible, sectionRef }) => {
             <Button
               className={styles.button}
               data-status={status}
-              //   data-sending={sending}
+              data-sending={formIsSending}
               style={getDelay(tokens.base.durationM, initDelay)}
-              //   disabled={sending}
-              //   loading={sending}
+              disabled={formIsSending}
+              loading={formIsSending}
               loadingText="Sending..."
               icon="send"
               type="submit"
