@@ -97,7 +97,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
       id={id}
       tabIndex={-1}
     >
-      <Transition unmount in={!formIsSubmitted} timeout={0}>
+      <Transition unmount in={visible && !formIsSubmitted} timeout={0}>
         {({ status, nodeRef }) => (
           <form
             // unstable_viewTransition
