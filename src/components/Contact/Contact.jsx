@@ -64,21 +64,18 @@ export const Contact = ({ id, visible, sectionRef }) => {
 
   const initDelay = tokens.base.durationS;
 
-  const sendEmail = form => {
+  const sendEmail = async form => {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-    emailjs
-      .sendForm(serviceId, templateId, form.current, {
-        publicKey: publicKey,
-      })
-      .then(result => {
-        setFormIsSubmitted(true);
-      })
-      .catch(error => {
-        alert(`Failed to send message.\n\n${error}`);
-      });
+    try {
+      const options = { publicKey: publicKey };
+      await emailjs.sendForm(serviceId, templateId, form.current, options);
+      setFormIsSubmitted(true);
+    } catch (error) {
+      alert(`Failed to send message.\n\n${error}`);
+    }
   };
 
   const handleFormSubmit = (form, formData) => {
