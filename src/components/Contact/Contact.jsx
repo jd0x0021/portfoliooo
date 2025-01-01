@@ -1,5 +1,5 @@
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '~/components/Button';
 import { DecoderText } from '~/components/DecoderText';
 import { Divider } from '~/components/Divider';
@@ -46,8 +46,15 @@ const validateFormInput = formData => {
   return true;
 };
 
+const resetFormInputFields = formData => {
+  formData.email.onReset();
+  formData.message.onReset();
+  formData.honey.onReset();
+};
+
 export const Contact = ({ id, visible, sectionRef }) => {
   const errorRef = useRef();
+  const [formIsSubmitted, setFormIsSubmitted] = useState(false);
 
   const formData = {
     email: useFormInput(''),
@@ -67,12 +74,10 @@ export const Contact = ({ id, visible, sectionRef }) => {
         publicKey: publicKey,
       })
       .then(result => {
-        console.log('Email sent:', result.text);
-        alert('Message sent successfully!');
+        setFormIsSubmitted(true);
       })
       .catch(error => {
-        console.error('Error sending email:', error);
-        alert('Failed to send message.');
+        alert(`Failed to send message.\n\n${error}`);
       });
   };
 
@@ -92,7 +97,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
       id={id}
       tabIndex={-1}
     >
-      <Transition unmount in={visible} timeout={0}>
+      <Transition unmount in={!formIsSubmitted} timeout={0}>
         {({ status, nodeRef }) => (
           <form
             // unstable_viewTransition
@@ -186,7 +191,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
         )}
       </Transition>
 
-      <Transition unmount>
+      <Transition unmount in={formIsSubmitted}>
         {({ status, nodeRef }) => (
           <div className={styles.complete} aria-live="polite" ref={nodeRef}>
             <Heading
@@ -204,7 +209,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              I’ll get back to you within a couple days, sit tight
+              I’ll get back to you within a couple days, sit tight.
             </Text>
             <Button
               secondary
@@ -212,10 +217,14 @@ export const Contact = ({ id, visible, sectionRef }) => {
               className={styles.completeButton}
               data-status={status}
               style={getDelay(tokens.base.durationM)}
-              href="/"
+              onClick={() => {
+                setFormIsSubmitted(false);
+                resetFormInputFields(formData);
+              }}
+              type="reset"
               icon="chevron-right"
             >
-              Back to homepage
+              Send another message
             </Button>
           </div>
         )}
