@@ -4,6 +4,7 @@ import { Button } from '~/components/Button';
 import { DecoderText } from '~/components/DecoderText';
 import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
+import { Icon } from '~/components/Icon';
 import { Input } from '~/components/Input';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
@@ -24,26 +25,29 @@ export const meta = () => {
 
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
-const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
+const EMAIL_PATTERN = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const validateFormInput = formData => {
+const getFormInputErrors = formData => {
   // form data is invalid if it's filled out by a bot
-  if (formData.honey) return false;
+  if (formData.honey.value) return null;
+
+  const formInputErrors = {};
 
   // invalid message
-  if (!formData.message || formData.message.length > MAX_MESSAGE_LENGTH) return false;
-
-  // invalid email
-  if (
-    !formData.email ||
-    EMAIL_PATTERN.test(formData.email) ||
-    formData.email.length > MAX_EMAIL_LENGTH
-  ) {
-    return false;
+  if (!formData.message.value) {
+    formInputErrors.message = 'Please enter a message.';
+  } else if (formData.message.value.length > MAX_MESSAGE_LENGTH) {
+    formInputErrors.message = `Message must be shorter than ${MAX_MESSAGE_LENGTH} characters.`;
   }
 
-  // all validations passed
-  return true;
+  // invalid email
+  if (!formData.email.value || !EMAIL_PATTERN.test(formData.email.value)) {
+    formInputErrors.email = 'Please enter a valid email address.';
+  } else if (formData.email.value.length > MAX_EMAIL_LENGTH) {
+    formInputErrors.email = `Email address must be shorter than ${MAX_EMAIL_LENGTH} characters.`;
+  }
+
+  return Object.keys(formInputErrors).length === 0 ? null : formInputErrors;
 };
 
 const resetFormInputFields = formData => {
@@ -55,6 +59,7 @@ const resetFormInputFields = formData => {
 export const Contact = ({ id, visible, sectionRef }) => {
   const errorRef = useRef();
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState(null);
 
   const formData = {
     email: useFormInput(''),
@@ -81,9 +86,14 @@ export const Contact = ({ id, visible, sectionRef }) => {
   const handleFormSubmit = (form, formData) => {
     if (!form.current) return;
 
-    if (validateFormInput(formData)) return;
+    const formHasErrors = getFormInputErrors(formData);
 
-    sendEmail(form);
+    if (formHasErrors) {
+      setFormErrors(formHasErrors);
+    } else {
+      setFormErrors(null);
+      sendEmail(form);
+    }
   };
 
   return (
@@ -151,7 +161,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               maxLength={MAX_MESSAGE_LENGTH}
               {...formData.message}
             />
-            <Transition unmount timeout={msToNum(tokens.base.durationM)}>
+            <Transition unmount in={formErrors} timeout={msToNum(tokens.base.durationM)}>
               {({ status: errorStatus, nodeRef }) => (
                 <div
                   className={styles.formError}
@@ -164,8 +174,9 @@ export const Contact = ({ id, visible, sectionRef }) => {
                   <div className={styles.formErrorContent} ref={errorRef}>
                     <div className={styles.formErrorMessage}>
                       <Icon className={styles.formErrorIcon} icon="error" />
-                      {/* {actionData?.errors?.email}
-                      {actionData?.errors?.message} */}
+                      {Object.values(formErrors).map((error, index) => (
+                        <span key={index}>{error}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
