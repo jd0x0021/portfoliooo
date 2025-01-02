@@ -63,9 +63,9 @@ const getFormInputErrors = formData => {
  * @param {*} formData (all the input elements' values that are in the contact form)
  */
 const resetFormInputFields = formData => {
-  formData.email.onReset();
-  formData.message.onReset();
-  formData.honey.onReset();
+  Object.values(formData).forEach(input => {
+    input.onReset();
+  });
 };
 
 export const Contact = ({ id, visible, sectionRef }) => {
