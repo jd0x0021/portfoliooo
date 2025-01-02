@@ -11,8 +11,9 @@ import { Text } from '~/components/Text';
 import { tokens } from '~/components/ThemeProvider/theme';
 import { Transition } from '~/components/Transition';
 import { useFormInput } from '~/hooks/useFormInput';
+import { getDelay } from '~/utils/delay';
 import { baseMeta } from '~/utils/meta';
-import { cssProps, msToNum, numToMs } from '~/utils/style';
+import { cssProps, msToNum } from '~/utils/style';
 import styles from './contact.module.css';
 
 export const meta = () => {
@@ -25,6 +26,7 @@ export const meta = () => {
 
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
+const INITIAL_DELAY = tokens.base.durationS;
 const EMAIL_PATTERN = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /**
@@ -80,8 +82,6 @@ export const Contact = ({ id, visible, sectionRef }) => {
     message: useFormInput(),
     honey: useFormInput(),
   };
-
-  const initDelay = tokens.base.durationS;
 
   /**
    * Send an email based on the inputs extracted from the contact form.
@@ -156,14 +156,14 @@ export const Contact = ({ id, visible, sectionRef }) => {
               data-status={status}
               level={3}
               as="h1"
-              style={getDelay(tokens.base.durationXS, initDelay, 0.3)}
+              style={getDelay(tokens.base.durationXS, INITIAL_DELAY, 0.3)}
             >
               <DecoderText text="Say hello" delay={300} />
             </Heading>
             <Divider
               className={styles.divider}
               data-status={status}
-              style={getDelay(tokens.base.durationXS, initDelay, 0.4)}
+              style={getDelay(tokens.base.durationXS, INITIAL_DELAY, 0.4)}
             />
             {/* Hidden honeypot field to identify bots */}
             <Input
@@ -177,7 +177,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               required
               className={styles.input}
               data-status={status}
-              style={getDelay(tokens.base.durationXS, initDelay)}
+              style={getDelay(tokens.base.durationXS, INITIAL_DELAY)}
               autoComplete="email"
               label="Your email"
               type="email"
@@ -190,7 +190,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               multiline
               className={styles.input}
               data-status={status}
-              style={getDelay(tokens.base.durationS, initDelay)}
+              style={getDelay(tokens.base.durationS, INITIAL_DELAY)}
               autoComplete="off"
               label="Message"
               name="user_message"
@@ -222,7 +222,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
               className={styles.button}
               data-status={status}
               data-sending={formIsSending}
-              style={getDelay(tokens.base.durationM, initDelay)}
+              style={getDelay(tokens.base.durationM, INITIAL_DELAY)}
               disabled={formIsSending}
               loading={formIsSending}
               loadingText="Sending..."
@@ -276,8 +276,3 @@ export const Contact = ({ id, visible, sectionRef }) => {
     </Section>
   );
 };
-
-function getDelay(delayMs, offset = numToMs(0), multiplier = 1) {
-  const numDelay = msToNum(delayMs) * multiplier;
-  return cssProps({ delay: numToMs((msToNum(offset) + numDelay).toFixed(0)) });
-}
