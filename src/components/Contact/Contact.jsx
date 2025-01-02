@@ -76,9 +76,9 @@ export const Contact = ({ id, visible, sectionRef }) => {
   const [formErrors, setFormErrors] = useState(null);
 
   const formData = {
-    email: useFormInput(''),
-    message: useFormInput(''),
-    honey: useFormInput(''),
+    email: useFormInput(),
+    message: useFormInput(),
+    honey: useFormInput(),
   };
 
   const initDelay = tokens.base.durationS;
