@@ -27,6 +27,13 @@ const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 const EMAIL_PATTERN = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+/**
+ * Get all specific errors from the input fields in the contact form.
+ * Return null if the contact form does not have any errors.
+ *
+ * @param {*} formData (all the input elements' values that are in the contact form)
+ * @returns null or an object that stores all specific form input field errors
+ */
 const getFormInputErrors = formData => {
   // form data is invalid if it's filled out by a bot
   if (formData.honey.value) return null;
@@ -50,6 +57,11 @@ const getFormInputErrors = formData => {
   return Object.keys(formInputErrors).length === 0 ? null : formInputErrors;
 };
 
+/**
+ * Reset all the contact form's input fields to its default value.
+ *
+ * @param {*} formData (all the input elements' values that are in the contact form)
+ */
 const resetFormInputFields = formData => {
   formData.email.onReset();
   formData.message.onReset();
@@ -58,6 +70,7 @@ const resetFormInputFields = formData => {
 
 export const Contact = ({ id, visible, sectionRef }) => {
   const errorRef = useRef();
+
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
   const [formIsSending, setFormIsSending] = useState(false);
   const [formErrors, setFormErrors] = useState(null);
@@ -70,6 +83,12 @@ export const Contact = ({ id, visible, sectionRef }) => {
 
   const initDelay = tokens.base.durationS;
 
+  /**
+   * Send an email based on the inputs extracted from the contact form.
+   * Our email's content will be based on that extracted data.
+   *
+   * @param {React.RefAttributes<HTMLFormElement>} form
+   */
   const sendEmail = async form => {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -77,6 +96,8 @@ export const Contact = ({ id, visible, sectionRef }) => {
 
     try {
       const options = { publicKey: publicKey };
+      // The input fields' name attribute are the ones
+      // that will be mapped into our emailJS template.
       await emailjs.sendForm(serviceId, templateId, form.current, options);
       setFormIsSubmitted(true);
     } catch (error) {
@@ -84,6 +105,13 @@ export const Contact = ({ id, visible, sectionRef }) => {
     }
   };
 
+  /**
+   * This is the code flow that's executed when we click on the send button in our contact form.
+   *
+   * @param {React.RefAttributes<HTMLFormElement>} form
+   * @param {*} formData (all the input elements' values that are in the contact form)
+   * @returns
+   */
   const handleFormSubmit = async (form, formData) => {
     if (!form.current) return;
 
@@ -93,6 +121,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
     const formHasErrors = getFormInputErrors(formData);
 
     if (formHasErrors) {
+      // show specific form errors
       setFormErrors(formHasErrors);
     } else {
       setFormErrors(null);
