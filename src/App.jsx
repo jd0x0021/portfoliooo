@@ -200,7 +200,7 @@ export function App() {
           />
 
           <Contact
-            id="contact-form"
+            id="contact"
             sectionRef={contact}
             visible={visibleSections.includes(contact.current)}
           />

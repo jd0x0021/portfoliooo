@@ -143,7 +143,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
       <Transition unmount in={visible && !formIsSubmitted} timeout={0}>
         {({ status, nodeRef }) => (
           <form
-            // unstable_viewTransition
+            id="contact-form"
             className={styles.form}
             ref={nodeRef}
             onSubmit={e => {

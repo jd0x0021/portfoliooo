@@ -16,7 +16,7 @@ export const navLinks = [
   },
   {
     label: 'Contact',
-    pathname: '/#contact-form',
+    pathname: '/#contact',
   },
   {
     label: 'Resume',
