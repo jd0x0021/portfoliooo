@@ -28,11 +28,14 @@ export function useFormInput(initialValue = '') {
     }
   };
 
+  const handleOnReset = () => setValue(initialValue);
+
   return {
     value,
     error,
     onChange: handleChange,
     onBlur: handleBlur,
     onInvalid: handleInvalid,
+    onReset: handleOnReset,
   };
 }
