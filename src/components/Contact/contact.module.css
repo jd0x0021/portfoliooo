@@ -30,6 +30,9 @@
 }
 
 .title {
+  display: flex;
+  flex-direction: column;
+
   margin-bottom: var(--space2XL);
   transition-property: opacity;
   transition-timing-function: var(--bezierFastoutSlowin);
@@ -307,10 +310,41 @@
   margin-right: var(--spaceS);
 }
 
-.footer {
-  opacity: 0;
+.tooltipContainer {
+  position: relative;
+  width: fit-content;
+  cursor: pointer;
+  margin-top: var(--spaceS);
 
-  &:global {
-    animation: fade-in var(--durationL) ease var(--durationXL) forwards;
+  transition-property: all;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationM);
+  opacity: 0.65;
+
+  &:hover {
+    .tooltip {
+      top: -175%;
+      opacity: 1;
+    }
+
+    opacity: 1;
   }
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  color: var(--textBody);
+  background-color: color-mix(in lab, var(--background) 70%, transparent);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+
+  opacity: 0;
+  padding: 0.3em 0.6em;
+  pointer-events: none;
+
+  transition-property: all;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationM);
 }

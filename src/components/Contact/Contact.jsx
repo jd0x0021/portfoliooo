@@ -6,11 +6,14 @@ import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
 import { Icon } from '~/components/Icon';
 import { Input } from '~/components/Input';
+import { Link } from '~/components/Link';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
 import { tokens } from '~/components/ThemeProvider/theme';
 import { Transition } from '~/components/Transition';
+import config from '~/config.json';
 import { useFormInput } from '~/hooks/useFormInput';
+import { useToggleText } from '~/hooks/useToggleText';
 import { getDelay } from '~/utils/delay';
 import { baseMeta } from '~/utils/meta';
 import { cssProps, msToNum } from '~/utils/style';
@@ -70,8 +73,20 @@ const resetFormInputFields = formData => {
   });
 };
 
+/**
+ * Copy my email to clipboard.
+ *
+ * @param {string} email
+ * @param {Function} successIndicator - A callback function (with no parameters) to be executed upon success.
+ */
+const copyEmailToClipboard = (email, successIndicator) => {
+  navigator.clipboard.writeText(email);
+  successIndicator(); // show a copy success indicator
+};
+
 export const Contact = ({ id, visible, sectionRef }) => {
   const errorRef = useRef();
+  const copyEmail = useToggleText('Copy my email', 'Email copied!');
 
   const [formIsSubmitted, setFormIsSubmitted] = useState(false);
   const [formIsSending, setFormIsSending] = useState(false);
@@ -159,6 +174,18 @@ export const Contact = ({ id, visible, sectionRef }) => {
               style={getDelay(tokens.base.durationXS, INITIAL_DELAY, 0.3)}
             >
               <DecoderText text="Say hello" delay={300} />
+
+              <Text className={styles.tooltipContainer} size="s" as="p">
+                <span className={styles.tooltip}>{copyEmail.text}</span>
+                <span>reach me at </span>
+                <Link
+                  onClick={() =>
+                    copyEmailToClipboard(config.email, copyEmail.toggleThenResetText())
+                  }
+                >
+                  {config.email}
+                </Link>
+              </Text>
             </Heading>
             <Divider
               className={styles.divider}
