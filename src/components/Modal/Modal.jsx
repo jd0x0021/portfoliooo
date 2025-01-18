@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { default as certificateOfAppreciation } from '~/assets/img/software-engineer-portfolio-seminar/certificate-of-appreciation.png';
-import { default as seminarPoster } from '~/assets/img/software-engineer-portfolio-seminar/seminar-poster.png';
+import certificateOfAppreciationPlaceholder from '~/assets/img/software-engineer-portfolio-seminar/certificate-of-appreciation-placeholder.png';
+import certificateOfAppreciation from '~/assets/img/software-engineer-portfolio-seminar/certificate-of-appreciation.png';
+import seminarPosterPlaceholder from '~/assets/img/software-engineer-portfolio-seminar/seminar-poster-placeholder.png';
+import seminarPoster from '~/assets/img/software-engineer-portfolio-seminar/seminar-poster.png';
 import { Divider } from '~/components/Divider';
 import { Heading } from '~/components/Heading';
 import { Icon } from '~/components/Icon';
@@ -13,7 +15,18 @@ import { Transition } from '~/components/Transition';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import styles from './modal.module.css';
 
-const IMAGES = [seminarPoster, certificateOfAppreciation];
+const IMAGES = [
+  {
+    src: seminarPoster,
+    placeholder: seminarPosterPlaceholder,
+    alt: 'Nov 12, 2022 Seminar',
+  },
+  {
+    src: certificateOfAppreciation,
+    placeholder: certificateOfAppreciationPlaceholder,
+    alt: 'Nov 12, 2022 Certificate of Appreciation',
+  },
+];
 
 export const Modal = ({ isOpen, onClose }) => {
   /**
@@ -90,7 +103,7 @@ export const Modal = ({ isOpen, onClose }) => {
             </div>
 
             <div className={styles.imageSlider}>
-              <ImageSlider imageUrls={IMAGES} />
+              <ImageSlider images={IMAGES} />
             </div>
 
             <div className={styles.modalInfo}>

@@ -1,9 +1,10 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
 import { Icon } from '~/components/Icon';
+import { Image } from '~/components/Image';
 import styles from './image-slider.module.css';
 
-export const ImageSlider = ({ imageUrls }) => {
+export const ImageSlider = ({ images }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   const scrollToPreviousSlide = useCallback(() => {
@@ -18,17 +19,15 @@ export const ImageSlider = ({ imageUrls }) => {
     <div className="embla">
       <div className={styles.emblaViewport} ref={emblaRef}>
         <div className={styles.emblaContainer}>
-          {imageUrls.map((imageUrl, index) => (
+          {images.map((image, index) => (
             <div className={styles.emblaSlide} key={index}>
-              <img
-                src={imageUrl}
-                alt=""
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'left',
-                  width: '100%',
-                  height: '100%',
-                }}
+              <Image
+                cover
+                reveal
+                delay={100}
+                placeholder={image.placeholder}
+                src={image.src}
+                alt={image.alt}
               />
             </div>
           ))}

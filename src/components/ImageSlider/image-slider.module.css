@@ -30,6 +30,7 @@
 
 .emblaContainer {
   display: flex;
+  min-height: 300px; /* so that we can see the loader */
 }
 
 .emblaSlide {

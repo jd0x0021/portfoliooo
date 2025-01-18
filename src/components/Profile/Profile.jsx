@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { default as profileImg, default as profileImgLarge } from '~/assets/me.png';
-import profileImgPlaceholder from '~/assets/profile-placeholder.jpg';
+import profileImgPlaceholder from '~/assets/img/profile/profile-placeholder.png';
+import {
+  default as profileImg,
+  default as profileImgLarge,
+} from '~/assets/img/profile/profile.png';
 import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
 import { Badges } from '~/components/Badges';
 import { skillsBadges } from '~/components/Badges/badgeData';
