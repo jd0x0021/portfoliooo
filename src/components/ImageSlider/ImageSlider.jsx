@@ -1,6 +1,8 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
+import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { Icon } from '~/components/Icon';
+import { Image } from '~/components/Image';
 import styles from './image-slider.module.css';
 
 export const ImageSlider = ({ imageUrls }) => {
@@ -20,15 +22,13 @@ export const ImageSlider = ({ imageUrls }) => {
         <div className={styles.emblaContainer}>
           {imageUrls.map((imageUrl, index) => (
             <div className={styles.emblaSlide} key={index}>
-              <img
+              <Image
+                cover
+                reveal
+                delay={100}
+                placeholder={sprTexturePlaceholder}
                 src={imageUrl}
                 alt=""
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'left',
-                  width: '100%',
-                  height: '100%',
-                }}
               />
             </div>
           ))}

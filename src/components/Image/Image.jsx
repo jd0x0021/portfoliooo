@@ -2,6 +2,7 @@ import { useReducedMotion } from 'framer-motion';
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { Button } from '~/components/Button';
 import { Icon } from '~/components/Icon';
+import { Loader } from '~/components/Loader';
 import { useTheme } from '~/components/ThemeProvider';
 import { useHasMounted } from '~/hooks/useHasMounted';
 import { useInViewport } from '~/hooks/useInViewport';
@@ -18,6 +19,7 @@ export const Image = ({
   src: baseSrc,
   srcSet,
   placeholder,
+  cover,
   ...rest
 }) => {
   const [loaded, setLoaded] = useState(false);
@@ -34,6 +36,7 @@ export const Image = ({
     <div
       className={classes(styles.image, className)}
       data-visible={inViewport || loaded}
+      data-cover={cover}
       data-reveal={reveal}
       data-raised={raised}
       data-theme={theme}
@@ -49,6 +52,7 @@ export const Image = ({
         src={src}
         srcSet={srcSet}
         placeholder={placeholder}
+        cover={cover}
         {...rest}
       />
     </div>
@@ -207,6 +211,7 @@ const ImageElements = ({
           role="presentation"
         />
       )}
+      {!loaded && <Loader center />}
     </div>
   );
 };

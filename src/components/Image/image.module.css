@@ -6,6 +6,10 @@
     grid-template-columns: 100%;
     isolation: isolate;
 
+    &[data-cover='true'] {
+      height: 100%;
+    }
+
     &[data-raised='true'] {
       box-shadow: 0 50px 100px -20px color-mix(in lab, var(--black) 25%, transparent),
         0 30px 60px -30px color-mix(in lab, var(--black) 30%, transparent);
@@ -78,6 +82,7 @@
     &[data-cover='true'] {
       height: 100%;
       object-fit: cover;
+      object-position: left;
     }
   }
 
