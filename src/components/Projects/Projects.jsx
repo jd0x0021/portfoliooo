@@ -1,9 +1,11 @@
 import { useRef } from 'react';
-import parajectWebsitePreview from '~/assets/img/projects/paraject.png';
+import parajectDesktopAppPlaceholder from '~/assets/img/projects/paraject-placeholder.png';
+import parajectDesktopAppPreview from '~/assets/img/projects/paraject.png';
+import pizzaShopWebsitePlaceholder from '~/assets/img/projects/pizza-shop-placeholder.png';
 import pizzaShopWebsitePreview from '~/assets/img/projects/pizza-shop.png';
-import { default as sprTextureLarge } from '~/assets/img/projects/spr-lesson-builder-dark-large.jpg';
-import { default as sprTexturePlaceholder } from '~/assets/img/projects/spr-lesson-builder-dark-placeholder.jpg';
-import { default as sprTexture } from '~/assets/img/projects/spr-lesson-builder-dark.jpg';
+import sprTextureLarge from '~/assets/img/projects/spr-lesson-builder-dark-large.jpg';
+import sprTexturePlaceholder from '~/assets/img/projects/spr-lesson-builder-dark-placeholder.jpg';
+import sprTexture from '~/assets/img/projects/spr-lesson-builder-dark.jpg';
 import {
   projectOneBadges,
   projectThreeBadges,
@@ -90,8 +92,8 @@ export const Projects = ({ id }) => {
           alt: 'For Projects - Paraject.',
           textures: [
             {
-              srcSet: `${parajectWebsitePreview} 1280w, ${parajectWebsitePreview} 2560w`,
-              placeholder: sprTexturePlaceholder,
+              srcSet: `${parajectDesktopAppPreview} 1280w, ${parajectDesktopAppPreview} 2560w`,
+              placeholder: parajectDesktopAppPlaceholder,
             },
           ],
         }}
@@ -119,7 +121,7 @@ export const Projects = ({ id }) => {
           textures: [
             {
               srcSet: `${pizzaShopWebsitePreview} 800w, ${pizzaShopWebsitePreview} 1920w`,
-              placeholder: sprTexturePlaceholder,
+              placeholder: pizzaShopWebsitePlaceholder,
             },
           ],
         }}
