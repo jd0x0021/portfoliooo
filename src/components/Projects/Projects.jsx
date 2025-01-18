@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import parajectWebsitePreview from '~/assets/paraject.jpg';
 import pizzaShopWebsitePreview from '~/assets/pizza-shop.jpg';
-import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
 import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
 import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
@@ -120,7 +119,7 @@ export const Projects = ({ id }) => {
           textures: [
             {
               srcSet: `${pizzaShopWebsitePreview} 800w, ${pizzaShopWebsitePreview} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              placeholder: sprTexturePlaceholder,
             },
           ],
         }}
