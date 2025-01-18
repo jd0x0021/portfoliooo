@@ -1,6 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
-import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
+import { default as sprTexturePlaceholder } from '~/assets/img/projects/spr-lesson-builder-dark-placeholder.jpg';
 import { Icon } from '~/components/Icon';
 import { Image } from '~/components/Image';
 import styles from './image-slider.module.css';

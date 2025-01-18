@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import parajectWebsitePreview from '~/assets/paraject.jpg';
-import pizzaShopWebsitePreview from '~/assets/pizza-shop.jpg';
-import { default as sprTextureLarge } from '~/assets/spr-lesson-builder-dark-large.jpg';
-import { default as sprTexturePlaceholder } from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import { default as sprTexture } from '~/assets/spr-lesson-builder-dark.jpg';
+import parajectWebsitePreview from '~/assets/img/projects/paraject.png';
+import pizzaShopWebsitePreview from '~/assets/img/projects/pizza-shop.png';
+import { default as sprTextureLarge } from '~/assets/img/projects/spr-lesson-builder-dark-large.jpg';
+import { default as sprTexturePlaceholder } from '~/assets/img/projects/spr-lesson-builder-dark-placeholder.jpg';
+import { default as sprTexture } from '~/assets/img/projects/spr-lesson-builder-dark.jpg';
 import {
   projectOneBadges,
   projectThreeBadges,
