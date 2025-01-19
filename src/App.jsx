@@ -183,6 +183,8 @@ export function App() {
         // data-loading={state === 'loading'}
       >
         <div>
+          <div className={styles.gridLines}></div>
+
           {isHydrated ? (
             <Suspense>
               <DisplacementSphere />

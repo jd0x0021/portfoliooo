@@ -40,4 +40,29 @@
       z-index: -1;
     }
   }
+
+  .gridLines {
+    background-size: 80px 80px;
+    background-image: repeating-linear-gradient(
+        0deg,
+        var(--gridLinesColor),
+        var(--gridLinesColor) 1px,
+        transparent 1px,
+        transparent 80px
+      ),
+      repeating-linear-gradient(
+        -90deg,
+        var(--gridLinesColor),
+        var(--gridLinesColor) 1px,
+        transparent 1px,
+        transparent 80px
+      );
+    height: 100%;
+    width: 100%;
+    opacity: 0.15;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--zIndexNeg1);
+  }
 }

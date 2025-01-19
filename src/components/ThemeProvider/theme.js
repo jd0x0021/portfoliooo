@@ -47,6 +47,7 @@ const baseTokens = {
   space3XL: '64px',
   space4XL: '96px',
   space5XL: '128px',
+  zIndexNeg1: -4,
   zIndex0: 0,
   zIndex1: 4,
   zIndex2: 8,
@@ -117,6 +118,7 @@ const dark = {
   textTitle: 'var(--text)',
   textBody: 'color-mix(in lab, var(--text) 80%, transparent)',
   textLight: 'color-mix(in lab, var(--text) 60%, transparent)',
+  gridLinesColor: 'oklch(40.2% 0 0)',
 };
 
 const light = {
@@ -129,6 +131,7 @@ const light = {
   textTitle: 'color-mix(in lab, var(--text) 90%, transparent)',
   textBody: 'color-mix(in lab, var(--text) 75%, transparent)',
   textLight: 'color-mix(in lab, var(--text) 55%, transparent)',
+  gridLinesColor: 'oklch(79.6% 0 0)',
 };
 
 export const tokens = {
