@@ -21,7 +21,7 @@ export default defineConfig({
             : '';
 
           // Don't add a file hash for assets in the assets\resume directory
-          if (assetPath.startsWith('assets\\resume')) {
+          if (assetPath.startsWith('assets/resume')) {
             return 'assets/resume/[name][extname]';
           }
 
