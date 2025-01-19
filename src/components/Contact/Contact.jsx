@@ -175,16 +175,17 @@ export const Contact = ({ id, visible, sectionRef }) => {
             >
               <DecoderText text="Say hello" delay={300} />
 
-              <Text className={styles.tooltipContainer} size="s" as="p">
+              <Text
+                className={styles.tooltipContainer}
+                size="s"
+                as="p"
+                onClick={() =>
+                  copyEmailToClipboard(config.email, copyEmail.toggleThenResetText)
+                }
+              >
                 <span className={styles.tooltip}>{copyEmail.text}</span>
                 <span>reach me at </span>
-                <Link
-                  onClick={() =>
-                    copyEmailToClipboard(config.email, copyEmail.toggleThenResetText)
-                  }
-                >
-                  {config.email}
-                </Link>
+                <Link>{config.email}</Link>
               </Text>
             </Heading>
             <Divider
