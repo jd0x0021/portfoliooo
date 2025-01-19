@@ -180,7 +180,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
                 <span>reach me at </span>
                 <Link
                   onClick={() =>
-                    copyEmailToClipboard(config.email, copyEmail.toggleThenResetText())
+                    copyEmailToClipboard(config.email, copyEmail.toggleThenResetText)
                   }
                 >
                   {config.email}
