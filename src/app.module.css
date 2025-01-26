@@ -42,27 +42,69 @@
   }
 
   .gridLines {
-    background-size: 80px 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    opacity: 0.15;
+    z-index: var(--zIndexNeg1);
+
+    /* base grid size */
+    background-size: var(--space4XL) var(--space4XL);
     background-image: repeating-linear-gradient(
         0deg,
         var(--gridLinesColor),
         var(--gridLinesColor) 1px,
         transparent 1px,
-        transparent 80px
+        transparent var(--space4XL)
       ),
       repeating-linear-gradient(
         -90deg,
         var(--gridLinesColor),
         var(--gridLinesColor) 1px,
         transparent 1px,
-        transparent 80px
+        transparent var(--space4XL)
       );
-    height: 100%;
-    width: 100%;
-    opacity: 0.15;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--zIndexNeg1);
+
+    /* update grid size */
+    @media only screen and (min-width: 2000px) {
+      background-size: var(--space5XL) var(--space5XL);
+      background-image: repeating-linear-gradient(
+          0deg,
+          var(--gridLinesColor),
+          var(--gridLinesColor) 1px,
+          transparent 1px,
+          transparent var(--space5XL)
+        ),
+        repeating-linear-gradient(
+          -90deg,
+          var(--gridLinesColor),
+          var(--gridLinesColor) 1px,
+          transparent 1px,
+          transparent var(--space5XL)
+        );
+    }
+
+    /* update grid size */
+    @media only screen and (min-width: 2500px) {
+      background-size: var(--space6XL) var(--space6XL);
+      background-image: repeating-linear-gradient(
+          0deg,
+          var(--gridLinesColor),
+          var(--gridLinesColor) 1px,
+          transparent 1px,
+          transparent var(--space6XL)
+        ),
+        repeating-linear-gradient(
+          -90deg,
+          var(--gridLinesColor),
+          var(--gridLinesColor) 1px,
+          transparent 1px,
+          transparent var(--space6XL)
+        );
+    }
   }
 }
