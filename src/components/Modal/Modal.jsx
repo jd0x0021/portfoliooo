@@ -28,18 +28,6 @@ const IMAGES = [
   },
 ];
 
-/**
- * Close the modal when we press the 'Esc' key.
- *
- * @param {React.KeyboardEvent} event
- * @param {Function} executeOnEsc - A callback function (with no parameters) to be executed when 'esc' key is pressed.
- */
-const handleEscKeyPress = (event, executeOnEsc) => {
-  if (event.key === 'Escape') {
-    executeOnEsc();
-  }
-};
-
 export const Modal = ({ isOpen, onClose }) => {
   /**
    * The reason we add the event listener to the global window object instead of directly on
@@ -47,14 +35,25 @@ export const Modal = ({ isOpen, onClose }) => {
    * action no matter where the focus currently is — even if the modal content isn't focused.
    */
   useEffect(() => {
+    /**
+     * Close the modal when we press the 'Esc' key.
+     *
+     * @param {React.KeyboardEvent} event
+     */
+    const handleEscKeyPress = event => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
     if (isOpen) {
-      window.addEventListener('keydown', event => handleEscKeyPress(event, onClose));
+      window.addEventListener('keydown', handleEscKeyPress);
     }
 
     return () => {
-      window.removeEventListener('keydown', event => handleEscKeyPress(event, onClose));
+      window.removeEventListener('keydown', handleEscKeyPress);
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   return createPortal(
     <Transition unmount in={isOpen} timeout={msToNum(tokens.base.durationL)}>
