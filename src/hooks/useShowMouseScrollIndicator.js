@@ -29,7 +29,7 @@ export function useShowMouseScrollIndicator(sectionRef) {
     return () => {
       indicatorObserver.disconnect();
     };
-  }, []);
+  }, [sectionRef]);
 
   return showMouseScrollIndicator;
 }

@@ -64,7 +64,7 @@ export function Intro({ id, sectionRef, ...rest }) {
             </header>
 
             <a
-              href="/#project-1"
+              href="/#projects"
               className={styles.scrollIndicator}
               data-status={status}
               data-hidden={showMouseScrollIndicator}
@@ -74,7 +74,7 @@ export function Intro({ id, sectionRef, ...rest }) {
             </a>
 
             <a
-              href="/#project-1"
+              href="/#projects"
               className={styles.mobileScrollIndicator}
               data-status={status}
               data-hidden={showMouseScrollIndicator}
