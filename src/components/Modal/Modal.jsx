@@ -28,18 +28,19 @@ const IMAGES = [
   },
 ];
 
-export const Modal = ({ isOpen, onClose }) => {
-  /**
-   * Close the modal when we press the 'Esc' key.
-   *
-   * @param {React.KeyboardEvent} event
-   */
-  const handleEscKeyPress = event => {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  };
+/**
+ * Close the modal when we press the 'Esc' key.
+ *
+ * @param {React.KeyboardEvent} event
+ * @param {Function} executeOnEsc - A callback function (with no parameters) to be executed when 'esc' key is pressed.
+ */
+const handleEscKeyPress = (event, executeOnEsc) => {
+  if (event.key === 'Escape') {
+    executeOnEsc();
+  }
+};
 
+export const Modal = ({ isOpen, onClose }) => {
   /**
    * The reason we add the event listener to the global window object instead of directly on
    * the ref of the modal element is because we want the Esc key to trigger the modal's closing
@@ -47,11 +48,11 @@ export const Modal = ({ isOpen, onClose }) => {
    */
   useEffect(() => {
     if (isOpen) {
-      window.addEventListener('keydown', handleEscKeyPress);
+      window.addEventListener('keydown', event => handleEscKeyPress(event, onClose));
     }
 
     return () => {
-      window.removeEventListener('keydown', handleEscKeyPress);
+      window.removeEventListener('keydown', event => handleEscKeyPress(event, onClose));
     };
   }, [isOpen]);
 
