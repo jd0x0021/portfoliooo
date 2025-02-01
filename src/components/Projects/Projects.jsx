@@ -40,7 +40,7 @@ export const Projects = ({ id }) => {
           data-align="center"
           className={styles.title}
         >
-          Here are some of the projects I've built. Feel free to check them out.
+          Here are some of the projects I&#39;ve built. Feel free to check them out.
         </Heading>
       </Section>
 
