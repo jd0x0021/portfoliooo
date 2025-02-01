@@ -120,7 +120,7 @@ export const Modal = ({ isOpen, onClose }) => {
 
               <Text data-visible={visible} as="p">
                 <Link href="https://johndavedalmao-12nov2022.pages.dev/" target="_blank">
-                  Click here to view the seminar's result.
+                  Click here to view the seminar&#39;s result.
                 </Link>
               </Text>
             </div>
