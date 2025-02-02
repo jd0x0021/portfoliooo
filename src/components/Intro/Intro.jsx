@@ -1,8 +1,7 @@
 import { DecoderText } from '~/components/DecoderText';
 import { Heading } from '~/components/Heading';
 import { Section } from '~/components/Section';
-import { useTheme } from '~/components/ThemeProvider';
-import { tokens } from '~/components/ThemeProvider/theme';
+import { tokens, useTheme } from '~/components/ThemeProvider';
 import { Transition } from '~/components/Transition';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
 import config from '~/config.json';

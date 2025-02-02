@@ -9,7 +9,7 @@ import { Input } from '~/components/Input';
 import { Link } from '~/components/Link';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
-import { tokens } from '~/components/ThemeProvider/theme';
+import { tokens } from '~/components/ThemeProvider';
 import { Transition } from '~/components/Transition';
 import config from '~/config.json';
 import { useFormInput } from '~/hooks/useFormInput';

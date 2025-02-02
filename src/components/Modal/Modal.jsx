@@ -10,7 +10,7 @@ import { Icon } from '~/components/Icon';
 import { ImageSlider } from '~/components/ImageSlider';
 import { Link } from '~/components/Link';
 import { Text } from '~/components/Text';
-import { tokens } from '~/components/ThemeProvider/theme';
+import { tokens } from '~/components/ThemeProvider';
 import { Transition } from '~/components/Transition';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import styles from './modal.module.css';
