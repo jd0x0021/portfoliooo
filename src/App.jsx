@@ -7,7 +7,8 @@ import { Profile } from '~/components/Profile';
 import { Projects } from '~/components/Projects';
 import { ThemeProvider, themeStyles } from '~/components/ThemeProvider';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
-import config from '~/config.json';
+import { useConsoleInfo } from '~/hooks/useConsoleInfo';
+import { useFavicon } from '~/hooks/useFavicon';
 import { useHasMounted } from '~/hooks/useHasMounted';
 import { useScrollToHash } from '~/hooks/useScrollToHash';
 import { useVisibleSections } from '~/hooks/useVisibleSections';
@@ -38,20 +39,10 @@ const DisplacementSphere = lazy(() =>
   }))
 );
 
-/**
- * Update the favicon based on the browser's theme (dark or light mode).
- *
- * @param {boolean} isDarkMode
- */
-const updateFavicon = isDarkMode => {
-  const favicon = document.querySelector("link[rel='icon']");
-  favicon.href = isDarkMode
-    ? '/favicons/favicon-light.png'
-    : '/favicons/favicon-dark.png';
-  document.head.appendChild(favicon);
-};
-
 export function App() {
+  useFavicon();
+  useConsoleInfo();
+
   const intro = useRef();
   const about = useRef();
   const contact = useRef();
@@ -72,31 +63,6 @@ export function App() {
       scrollToHash(location.hash);
     }
   }, [location.hash, scrollToHash]);
-
-  useEffect(() => {
-    // Set the favicon based on initial theme
-    const browserColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    updateFavicon(browserColorScheme.matches);
-
-    // Update the favicon if the browser's theme changes
-    browserColorScheme.addEventListener('change', e => {
-      updateFavicon(e.matches);
-    });
-
-    // Cleanup event listener on component unmount
-    return () => {
-      browserColorScheme.removeEventListener('change', e => {
-        updateFavicon(e.matches);
-      });
-    };
-  }, []);
-
-  useEffect(() => {
-    console.info(
-      `\n\n${config.ascii}\n\n`,
-      `Taking a peek huh? Check out the source code: ${config.github}/portfoliooo\n\n`
-    );
-  }, []);
 
   return (
     <ThemeProvider>
