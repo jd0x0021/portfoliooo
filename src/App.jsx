@@ -4,7 +4,6 @@ import { Contact } from '~/components/Contact';
 import { Footer } from '~/components/Footer';
 import { Intro } from '~/components/Intro';
 import { Profile } from '~/components/Profile';
-import { Progress } from '~/components/Progress';
 import { Projects } from '~/components/Projects';
 import { ThemeProvider, themeStyles } from '~/components/ThemeProvider';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
@@ -202,7 +201,6 @@ export function App() {
 
   return (
     <ThemeProvider>
-      <Progress />
       <VisuallyHidden showOnFocus as="a" className={styles.skip} href="#main-content">
         Skip to main content
       </VisuallyHidden>
