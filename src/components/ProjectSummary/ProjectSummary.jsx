@@ -9,7 +9,7 @@ import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
 import { useTheme } from '~/components/ThemeProvider';
 import { Transition } from '~/components/Transition';
-import { useHydrated } from '~/hooks/useHydrated';
+import { useHasMounted } from '~/hooks/useHasMounted';
 import { useWindowSize } from '~/hooks/useWindowSize';
 import { cssProps, media } from '~/utils/style';
 import styles from './project-summary.module.css';
@@ -36,7 +36,7 @@ export function ProjectSummary({
   const [modelLoaded, setModelLoaded] = useState(false);
   const { theme } = useTheme();
   const { width } = useWindowSize();
-  const isHydrated = useHydrated();
+  const hasMounted = useHasMounted();
   const titleId = `${id}-title`;
   const isMobile = width <= media.tablet;
   const svgOpacity = theme === 'light' ? 0.7 : 1;
@@ -120,7 +120,7 @@ export function ProjectSummary({
               {!modelLoaded && (
                 <Loader center className={styles.loader} data-visible={visible} />
               )}
-              {isHydrated && visible && (
+              {hasMounted && visible && (
                 <Suspense>
                   <Model
                     alt={model.alt}
@@ -150,7 +150,7 @@ export function ProjectSummary({
               {!modelLoaded && (
                 <Loader center className={styles.loader} data-visible={visible} />
               )}
-              {isHydrated && visible && (
+              {hasMounted && visible && (
                 <Suspense>
                   <Model
                     alt={model.alt}
