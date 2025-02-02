@@ -33,4 +33,15 @@ export default [
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
+  {
+    // This override applies to vite.config.js ONLY.
+    files: ['vite.config.js'],
+    languageOptions: {
+      globals: {
+        // Add __dirname as a global in this file
+        // https://eslint.org/docs/latest/use/configure/configuration-files#cascading-configuration-objects
+        __dirname: 'readonly',
+      },
+    },
+  },
 ];
