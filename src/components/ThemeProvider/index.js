@@ -1,7 +1,2 @@
-export { themes } from './theme';
-export {
-  ThemeContext,
-  ThemeProvider,
-  themeStyles,
-  useTheme as useTheme,
-} from './ThemeProvider';
+export { ThemeContext, themes, themeStyles, tokens, useTheme } from './theme';
+export { ThemeProvider } from './ThemeProvider';

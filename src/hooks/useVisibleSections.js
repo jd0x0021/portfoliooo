@@ -44,7 +44,7 @@ export function useVisibleSections(sections) {
     return () => {
       sectionObserver.disconnect();
     };
-  }, [visibleSections]);
+  }, [visibleSections, sections]);
 
   return visibleSections;
 }

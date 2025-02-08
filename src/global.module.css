@@ -21,7 +21,6 @@
     transition: var(--durationM) ease;
     transition-property: background, opacity;
     color: var(--textBody);
-    width: 100vw;
     overflow-x: hidden;
     opacity: 1;
 

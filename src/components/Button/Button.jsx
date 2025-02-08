@@ -97,3 +97,8 @@ const ButtonContent = forwardRef(
     );
   }
 );
+
+// forwardRef-wrapped components do not automatically have a displayName property in React. Having a display name
+// helps us identify the component in the react developer tools, or in stack traces (making it easier to debug).
+Button.displayName = 'Button';
+ButtonContent.displayName = 'ButtonContent';

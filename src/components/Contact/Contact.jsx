@@ -9,23 +9,14 @@ import { Input } from '~/components/Input';
 import { Link } from '~/components/Link';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
-import { tokens } from '~/components/ThemeProvider/theme';
+import { tokens } from '~/components/ThemeProvider';
 import { Transition } from '~/components/Transition';
 import config from '~/config.json';
 import { useFormInput } from '~/hooks/useFormInput';
 import { useToggleText } from '~/hooks/useToggleText';
 import { getDelay } from '~/utils/delay';
-import { baseMeta } from '~/utils/meta';
 import { cssProps, msToNum } from '~/utils/style';
 import styles from './contact.module.css';
-
-export const meta = () => {
-  return baseMeta({
-    title: 'Contact',
-    description:
-      'Send me a message if you’re interested in discussing a project or if you just want to say hi',
-  });
-};
 
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;

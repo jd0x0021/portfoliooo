@@ -3,9 +3,10 @@
     width: 100%;
     position: relative;
     transition: opacity 0.4s var(--bezierFastoutSlowin);
+    opacity: 0;
 
-    &[data-loading='true'] {
-      opacity: 0;
+    &[data-mounted='true'] {
+      opacity: 1;
     }
   }
 

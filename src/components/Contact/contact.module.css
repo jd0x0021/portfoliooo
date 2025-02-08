@@ -19,7 +19,8 @@
 
 .form {
   grid-area: 1 / 1;
-  max-width: var(--maxWidthS);
+  max-width: var(--contentWidthM);
+
   width: 100%;
   padding: var(--space2XL) 0 0 0;
 

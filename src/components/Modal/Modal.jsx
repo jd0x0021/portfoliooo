@@ -10,7 +10,7 @@ import { Icon } from '~/components/Icon';
 import { ImageSlider } from '~/components/ImageSlider';
 import { Link } from '~/components/Link';
 import { Text } from '~/components/Text';
-import { tokens } from '~/components/ThemeProvider/theme';
+import { tokens } from '~/components/ThemeProvider';
 import { Transition } from '~/components/Transition';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import styles from './modal.module.css';
@@ -30,22 +30,22 @@ const IMAGES = [
 
 export const Modal = ({ isOpen, onClose }) => {
   /**
-   * Close the modal when we press the 'Esc' key.
-   *
-   * @param {React.KeyboardEvent} event
-   */
-  const handleEscKeyPress = event => {
-    if (event.key === 'Escape') {
-      onClose();
-    }
-  };
-
-  /**
    * The reason we add the event listener to the global window object instead of directly on
    * the ref of the modal element is because we want the Esc key to trigger the modal's closing
    * action no matter where the focus currently is — even if the modal content isn't focused.
    */
   useEffect(() => {
+    /**
+     * Close the modal when we press the 'Esc' key.
+     *
+     * @param {React.KeyboardEvent} event
+     */
+    const handleEscKeyPress = event => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
     if (isOpen) {
       window.addEventListener('keydown', handleEscKeyPress);
     }
@@ -53,7 +53,7 @@ export const Modal = ({ isOpen, onClose }) => {
     return () => {
       window.removeEventListener('keydown', handleEscKeyPress);
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   return createPortal(
     <Transition unmount in={isOpen} timeout={msToNum(tokens.base.durationL)}>
@@ -120,7 +120,7 @@ export const Modal = ({ isOpen, onClose }) => {
 
               <Text data-visible={visible} as="p">
                 <Link href="https://johndavedalmao-12nov2022.pages.dev/" target="_blank">
-                  Click here to view the seminar's result.
+                  Click here to view the seminar&#39;s result.
                 </Link>
               </Text>
             </div>

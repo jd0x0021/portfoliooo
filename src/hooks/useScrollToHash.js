@@ -38,7 +38,7 @@ export function useScrollToHash() {
         clearTimeout(scrollTimeout.current);
       };
     },
-    [reduceMotion]
+    [reduceMotion, location.pathname, navigate]
   );
 
   return scrollToHash;

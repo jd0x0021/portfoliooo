@@ -4,72 +4,17 @@ import { Contact } from '~/components/Contact';
 import { Footer } from '~/components/Footer';
 import { Intro } from '~/components/Intro';
 import { Profile } from '~/components/Profile';
-import { Progress } from '~/components/Progress';
 import { Projects } from '~/components/Projects';
 import { ThemeProvider, themeStyles } from '~/components/ThemeProvider';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
-import config from '~/config.json';
-import { useHydrated } from '~/hooks/useHydrated';
+import { useConsoleInfo } from '~/hooks/useConsoleInfo';
+import { useFavicon } from '~/hooks/useFavicon';
+import { useHasMounted } from '~/hooks/useHasMounted';
 import { useScrollToHash } from '~/hooks/useScrollToHash';
 import { useVisibleSections } from '~/hooks/useVisibleSections';
 import { Error } from '~/layouts/Error';
 import { Navbar } from '~/layouts/Navbar';
-import { baseMeta } from '~/utils/meta';
 import styles from './app.module.css';
-
-// export const links = () => [
-//   {
-//     rel: 'preload',
-//     href: GothamMedium,
-//     as: 'font',
-//     type: 'font/woff2',
-//     crossOrigin: '',
-//   },
-//   {
-//     rel: 'preload',
-//     href: GothamBook,
-//     as: 'font',
-//     type: 'font/woff2',
-//     crossOrigin: '',
-//   },
-//   { rel: 'manifest', href: '/manifest.json' },
-//   { rel: 'icon', href: '/favicon.ico' },
-//   { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-//   { rel: 'shortcut_icon', href: '/shortcut.png', type: 'image/png', sizes: '64x64' },
-//   { rel: 'apple-touch-icon', href: '/icon-256.png', sizes: '256x256' },
-//   { rel: 'author', href: '/humans.txt', type: 'text/plain' },
-// ];
-
-export const loader = async ({ request, context }) => {
-  const { url } = request;
-  const { pathname } = new URL(url);
-  const pathnameSliced = pathname.endsWith('/') ? pathname.slice(0, -1) : url;
-  const canonicalUrl = `${config.url}${pathnameSliced}`;
-
-  // const { getSession, commitSession } = createCookieSessionStorage({
-  //   cookie: {
-  //     name: '__session',
-  //     httpOnly: true,
-  //     maxAge: 604_800,
-  //     path: '/',
-  //     sameSite: 'lax',
-  //     secrets: [context.cloudflare.env.SESSION_SECRET || ' '],
-  //     secure: true,
-  //   },
-  // });
-
-  // const session = await getSession(request.headers.get('Cookie'));
-  const theme = localStorage.get('theme') || 'dark';
-
-  return json(
-    { canonicalUrl, theme }
-    // {
-    //   headers: {
-    //     'Set-Cookie': await commitSession(session),
-    //   },
-    // }
-  );
-};
 
 export function AppErrorBoundary() {
   return (
@@ -94,56 +39,18 @@ const DisplacementSphere = lazy(() =>
   }))
 );
 
-// Prefetch draco decoader wasm
-export const links = () => {
-  return [
-    {
-      rel: 'prefetch',
-      href: '/draco/draco_wasm_wrapper.js',
-      as: 'script',
-      type: 'text/javascript',
-      importance: 'low',
-    },
-    {
-      rel: 'prefetch',
-      href: '/draco/draco_decoder.wasm',
-      as: 'fetch',
-      type: 'application/wasm',
-      importance: 'low',
-    },
-  ];
-};
-
-/**
- * Update the favicon based on the browser's theme (dark or light mode).
- *
- * @param {boolean} isDarkMode
- */
-const updateFavicon = isDarkMode => {
-  const favicon = document.querySelector("link[rel='icon']");
-  favicon.href = isDarkMode
-    ? '/favicons/favicon-light.png'
-    : '/favicons/favicon-dark.png';
-  document.head.appendChild(favicon);
-};
-
-export const meta = () => {
-  return baseMeta({
-    title: 'Designer + Developer',
-    description: `Design portfolio of ${config.name} — a product designer working on web & mobile apps with a focus on motion, experience design, and accessibility.`,
-  });
-};
-
 export function App() {
-  ////
+  useFavicon();
+  useConsoleInfo();
+
   const intro = useRef();
   const about = useRef();
   const contact = useRef();
   const visibleSections = useVisibleSections([intro, about, contact]);
 
-  const isHydrated = useHydrated();
-  const scrollToHash = useScrollToHash();
   const location = useLocation();
+  const hasMounted = useHasMounted();
+  const scrollToHash = useScrollToHash();
 
   useEffect(() => {
     if (!location.hash) {
@@ -155,54 +62,10 @@ export function App() {
       // reloads no matter where the current scroll position in the page is.
       scrollToHash(location.hash);
     }
-  }, [location.hash]);
-  ////
-
-  ////
-
-  // const [theme, setTheme] = useState('dark');
-
-  // // if (localStorage.getItem('theme')) {
-  // //   theme = fetcher.formData.get('theme');
-  // // }
-
-  // function toggleTheme(newTheme) {
-  //   setTheme(newTheme ? newTheme : theme === 'dark' ? 'light' : 'dark');
-  //   // fetcher.submit(
-  //   //   { theme: newTheme ? newTheme : theme === 'dark' ? 'light' : 'dark' },
-  //   //   { action: '/api/set-theme', method: 'post' }
-  //   // );
-  // }
-
-  useEffect(() => {
-    // Set the favicon based on initial theme
-    const browserColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    updateFavicon(browserColorScheme.matches);
-
-    // Update the favicon if the browser's theme changes
-    browserColorScheme.addEventListener('change', e => {
-      updateFavicon(e.matches);
-    });
-
-    // Cleanup event listener on component unmount
-    return () => {
-      browserColorScheme.removeEventListener('change', e => {
-        updateFavicon(e.matches);
-      });
-    };
-  }, []);
-
-  useEffect(() => {
-    console.info(
-      `\n\n${config.ascii}\n\n`,
-      `Taking a peek huh? Check out the source code: ${config.github}/portfoliooo\n\n`
-    );
-  }, []);
-  ////
+  }, [location.hash, scrollToHash]);
 
   return (
     <ThemeProvider>
-      <Progress />
       <VisuallyHidden showOnFocus as="a" className={styles.skip} href="#main-content">
         Skip to main content
       </VisuallyHidden>
@@ -211,12 +74,12 @@ export function App() {
         id="main-content"
         className={styles.container}
         tabIndex={-1}
-        // data-loading={state === 'loading'}
+        data-mounted={hasMounted}
       >
         <div>
           <div className={styles.gridLines}></div>
 
-          {isHydrated ? (
+          {hasMounted ? (
             <Suspense>
               <DisplacementSphere />
             </Suspense>

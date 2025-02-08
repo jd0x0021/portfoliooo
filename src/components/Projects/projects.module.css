@@ -3,7 +3,6 @@
 
   @media (--mediaMobile) {
     padding-top: var(--space4XL);
-    overflow-x: hidden;
   }
 }
 

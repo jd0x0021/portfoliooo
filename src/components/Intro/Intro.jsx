@@ -1,8 +1,7 @@
 import { DecoderText } from '~/components/DecoderText';
 import { Heading } from '~/components/Heading';
 import { Section } from '~/components/Section';
-import { useTheme } from '~/components/ThemeProvider';
-import { tokens } from '~/components/ThemeProvider/theme';
+import { tokens, useTheme } from '~/components/ThemeProvider';
 import { Transition } from '~/components/Transition';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
 import config from '~/config.json';
@@ -64,7 +63,7 @@ export function Intro({ id, sectionRef, ...rest }) {
             </header>
 
             <a
-              href="/#project-1"
+              href="/#projects"
               className={styles.scrollIndicator}
               data-status={status}
               data-hidden={showMouseScrollIndicator}
@@ -74,7 +73,7 @@ export function Intro({ id, sectionRef, ...rest }) {
             </a>
 
             <a
-              href="/#project-1"
+              href="/#projects"
               className={styles.mobileScrollIndicator}
               data-status={status}
               data-hidden={showMouseScrollIndicator}
