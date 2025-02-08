@@ -4,11 +4,18 @@
 
     display: flex;
     flex-direction: column;
-    width: 100vw;
     padding: var(--space3XL) var(--spaceL);
     z-index: var(--zIndex2);
     position: relative;
     color: var(--textLight);
+
+    @media (--mediaTablet) {
+      padding-left: var(--space4XL);
+    }
+
+    @media (--mediaMobile) {
+      padding-left: var(--spaceL);
+    }
   }
 
   .link {

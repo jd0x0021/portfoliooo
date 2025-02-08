@@ -12,7 +12,7 @@
     }
 
     @media (--mediaTablet) {
-      padding-left: calc(var(--space4XL) + var(--space3XL));
+      padding-left: calc(var(--space4XL) * 2.1);
     }
 
     @media (--mediaMobile) {
