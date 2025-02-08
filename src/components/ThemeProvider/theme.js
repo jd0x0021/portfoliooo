@@ -41,6 +41,7 @@ const baseTokens = {
   fontSizeBodyXS: pxToRem(14),
   lineHeightTitle: '1.1',
   lineHeightBody: '1.6',
+  contentWidthM: '600px',
   maxWidthS: '540px',
   maxWidthM: '720px',
   maxWidthL: '1096px',
