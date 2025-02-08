@@ -1,25 +1,11 @@
 .summary {
   width: 100%;
   max-height: 1080px;
-  /* margin: 120px 0; */
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* @media (--mediaDesktop) {
-    margin: var(--space2XL) 0;
-  }
-
-  @media (--mediaTablet) {
-    height: auto;
-    margin: var(--space3XL) 0;
-  }
-
-  @media (--mediaMobile) {
-    padding-bottom: var(--space4XL);
-    margin-bottom: 0;
-  } */
 
   &[data-first='true'] {
     margin-top: 0;
