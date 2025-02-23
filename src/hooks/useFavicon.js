@@ -10,7 +10,6 @@ const updateFavicon = isDarkMode => {
   favicon.href = isDarkMode
     ? '/favicons/favicon-light.png'
     : '/favicons/favicon-dark.png';
-  document.head.appendChild(favicon);
 };
 
 export const useFavicon = () => {
