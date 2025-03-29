@@ -4,7 +4,6 @@ import {
   default as profileImg,
   default as profileImgLarge,
 } from '~/assets/img/profile/profile.png';
-import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
 import { Badges } from '~/components/Badges';
 import { skillsBadges } from '~/components/Badges/badgeData';
 import { Button } from '~/components/Button';
@@ -17,6 +16,7 @@ import { Modal } from '~/components/Modal';
 import { Section } from '~/components/Section';
 import { Text } from '~/components/Text';
 import { Transition } from '~/components/Transition';
+import config from '~/config.json';
 import { media } from '~/utils/style';
 import styles from './profile.module.css';
 
@@ -79,7 +79,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 secondary
                 className={styles.button}
                 data-visible={visible}
-                href={resume}
+                href={config.resumeFilePath}
                 icon="send"
                 target="_blank"
               >

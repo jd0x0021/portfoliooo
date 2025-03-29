@@ -1,4 +1,3 @@
-import resume from '~/assets/resume/JohnDalmaoResume2021.pdf';
 import config from '~/config.json';
 
 export const navLinks = [
@@ -20,7 +19,7 @@ export const navLinks = [
   },
   {
     label: 'Resume',
-    pathname: resume,
+    pathname: config.resumeFilePath,
   },
 ];
 
