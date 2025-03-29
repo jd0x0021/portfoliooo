@@ -1,11 +1,10 @@
 import { useRef } from 'react';
+import lcgenjdPlaceHolder from '~/assets/img/projects/lcgenjd-placeholder.png';
+import lcgenjdPreview from '~/assets/img/projects/lcgenjd.png';
 import parajectDesktopAppPlaceholder from '~/assets/img/projects/paraject-placeholder.png';
 import parajectDesktopAppPreview from '~/assets/img/projects/paraject.png';
 import pizzaShopWebsitePlaceholder from '~/assets/img/projects/pizza-shop-placeholder.png';
 import pizzaShopWebsitePreview from '~/assets/img/projects/pizza-shop.png';
-import sprTextureLarge from '~/assets/img/projects/spr-lesson-builder-dark-large.jpg';
-import sprTexturePlaceholder from '~/assets/img/projects/spr-lesson-builder-dark-placeholder.jpg';
-import sprTexture from '~/assets/img/projects/spr-lesson-builder-dark.jpg';
 import {
   projectOneBadges,
   projectThreeBadges,
@@ -49,23 +48,23 @@ export const Projects = ({ id }) => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
+        title="Lcgenjd"
+        description="A client-side web application that automates data transformation, converting user-entered text into structured Changelog XML, eliminating the need for manual XML generation."
         sourceCodeBtn={{
           text: 'Source Code',
-          link: '#',
+          link: 'https://github.com/jd0x0021/lcgenjd',
         }}
         liveViewBtn={{
           text: 'Live View',
-          link: '#',
+          link: 'https://lcgenjd.pages.dev/',
         }}
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'Lcgenjd - Liquibase Changelog Generator',
           textures: [
             {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
+              srcSet: `${lcgenjdPreview} 1280w, ${lcgenjdPreview} 2560w`,
+              placeholder: lcgenjdPlaceHolder,
             },
           ],
         }}
