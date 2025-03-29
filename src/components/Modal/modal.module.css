@@ -1,0 +1,147 @@
+.modal {
+  z-index: var(--zIndex4);
+  --backdrop: blur(24px) saturate(120%);
+
+  position: fixed;
+  inset: 0;
+  background: color-mix(in lab, var(--background) 70%, transparent);
+  transform: translate3d(0, -100%, 0);
+  transition-property: background;
+  transition-duration: var(--durationL);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-backdrop-filter: var(--backdrop);
+  backdrop-filter: var(--backdrop);
+  display: flex;
+
+  @media (--mediaUseMotion) {
+    transition-property: transform, background;
+  }
+
+  &[data-visible='true'] {
+    transform: none;
+  }
+}
+
+.modalContent {
+  display: grid;
+  grid-template-areas:
+    'modalHeader'
+    'imageSlider'
+    'modalInfo';
+  row-gap: var(--spaceM);
+  grid-column-gap: var(--spaceXL);
+
+  color: var(--textBody);
+
+  padding: 25px;
+  max-width: 650px;
+  width: 80%;
+
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--durationXL);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-delay: var(--transitionDelay);
+
+  clip-path: polygon(
+    0px 0%,
+    calc(100% - 0px) 0%,
+    100% 0px,
+    100% calc(100% - 60px),
+    calc(100% - 60px) 100%,
+    0px 100%,
+    0% calc(100% - 0px),
+    0% 0px
+  );
+
+  /* add border to a clipped corner https://stackoverflow.com/a/62485187/11565087 */
+  --grad: transparent 49.5%, var(--textBody) 50%;
+  --transparent100: transparent 100%, transparent 100%;
+
+  background: linear-gradient(to top right, var(--transparent100)) top right,
+    linear-gradient(to top left, var(--transparent100)) top left,
+    linear-gradient(to bottom right, var(--grad)) bottom right,
+    linear-gradient(to bottom left, var(--transparent100)) bottom left, transparent;
+
+  background-size: 60.73px 60.73px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+
+  border: 1px solid var(--textBody);
+
+  @media only screen and (min-width: 1450px) {
+    grid-template-areas:
+      'imageSlider modalHeader'
+      'imageSlider modalInfo';
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 2fr;
+    max-width: 1380px;
+  }
+
+  @media (--mediaUseMotion) {
+    transition-property: transform, opacity;
+    transform: translate3d(0, calc(var(--spaceXL) * -1), 0);
+  }
+
+  @media (--mediaUseMotion) {
+    &::after {
+      transition: transform var(--durationM) var(--bezierFastoutSlowin);
+    }
+  }
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  grid-area: modalHeader;
+  width: 100%;
+  justify-content: space-between;
+
+  @media only screen and (min-width: 1450px) {
+    margin-bottom: var(--spaceXL);
+  }
+}
+
+.title {
+  margin: auto 0;
+}
+
+.tag {
+  display: grid;
+  grid-template-columns: var(--space4XL) 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: var(--spaceM);
+}
+
+.tagText {
+  font-size: var(--fontSizeBodyS);
+  font-weight: var(--fontWeightMedium);
+  color: var(--primary);
+}
+
+.closeIcon {
+  --iconSize: var(--spaceXL);
+  fill: var(--textBody);
+  width: var(--iconSize);
+  height: var(--iconSize);
+}
+
+.imageSlider {
+  grid-area: imageSlider;
+  margin: auto 0;
+}
+
+.modalInfo {
+  grid-area: modalInfo;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceM);
+}
