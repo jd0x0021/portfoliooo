@@ -1,7 +1,7 @@
 @layer components {
   .button {
     --buttonSize: calc((56 / 16) * 1rem);
-    --buttonFontSize: calc((18 / 16) * 1rem);
+    --buttonFontSize: calc((17.1 / 16) * 1rem);
     --buttonFocusWidth: 4px;
     --buttonPadding: 0 var(--spaceL);
     --buttonTextColor: var(--background);
