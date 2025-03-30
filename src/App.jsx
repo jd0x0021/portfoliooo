@@ -8,7 +8,6 @@ import { Projects } from '~/components/Projects';
 import { ThemeProvider, themeStyles } from '~/components/ThemeProvider';
 import { VisuallyHidden } from '~/components/VisuallyHidden';
 import { useConsoleInfo } from '~/hooks/useConsoleInfo';
-import { useFavicon } from '~/hooks/useFavicon';
 import { useHasMounted } from '~/hooks/useHasMounted';
 import { useScrollToHash } from '~/hooks/useScrollToHash';
 import { useVisibleSections } from '~/hooks/useVisibleSections';
@@ -40,7 +39,6 @@ const DisplacementSphere = lazy(() =>
 );
 
 export function App() {
-  useFavicon();
   useConsoleInfo();
 
   const intro = useRef();
