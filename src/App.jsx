@@ -74,7 +74,7 @@ export function App() {
         tabIndex={-1}
         data-mounted={hasMounted}
       >
-        <div>
+        <div className={styles.pageContent}>
           <div className={styles.gridLines}></div>
 
           {hasMounted ? (
