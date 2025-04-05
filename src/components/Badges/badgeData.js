@@ -43,9 +43,19 @@ const javaScript = {
   iconSource: './icons/skills/javascript.svg',
 };
 
+const jUnit = {
+  name: 'JUnit',
+  iconSource: './icons/skills/junit.svg',
+};
+
 const microsoftSqlServer = {
   name: 'MS SQL Server',
   iconSource: './icons/skills/microsoft-sql-server.svg',
+};
+
+const mockito = {
+  name: 'Mockito',
+  iconSource: './icons/skills/mockito.png',
 };
 
 const oracleSqlDeveloper = {
@@ -86,10 +96,12 @@ export const skillsBadges = [
   tailwindCss,
   bootstrap,
   oracleSqlDeveloper,
-  microsoftSqlServer,
   cloudflare,
+  microsoftSqlServer,
   git,
   figma,
+  jUnit,
+  mockito,
 ];
 
 export const projectOneBadges = [react, typeScript, figma, tailwindCss, cloudflare];
