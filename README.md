@@ -95,7 +95,7 @@ My portfolio is hosted on <a href="https://pages.cloudflare.com/">Cloudflare Pag
 
 8. Wait until your project is completely deployed. Even after the success message, it may take some time for your project to be fully deployed.
 9. On the sidebar select Workers & Pages, then select your project.
-10. Go to the Settings tab, then select Variables and Secrets, and add the EmailJS properties (so that the send email functionality will work in production).
+10. Go to the Settings tab, then select Variables and Secrets, and add the EmailJS properties (so that the **send email** functionality will work in production).
 
 <img src="https://github.com/user-attachments/assets/7ffad641-aace-40d5-8ab2-d2c76d482431" width="800" alt="emailjs env properties on cloudflare pages" />
 
