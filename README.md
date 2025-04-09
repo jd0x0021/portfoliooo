@@ -102,3 +102,8 @@ My portfolio is hosted on <a href="https://pages.cloudflare.com/">Cloudflare Pag
 &nbsp;
 
 11. Done! The website is successfully hosted! 🤩
+
+</br>
+
+## Credits
+My portfolio website was heavily inspired by the work of: <a href="https://github.com/HamishMW/portfolio">HamishMW</a>.
