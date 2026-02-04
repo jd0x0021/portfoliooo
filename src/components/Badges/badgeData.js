@@ -3,9 +3,9 @@ const bootstrap = {
   iconSource: './icons/skills/bootstrap.svg',
 };
 
-const cloudflare = {
-  name: 'Cloudflare',
-  iconSource: './icons/skills/cloudflare.svg',
+const cloudflarePages = {
+  name: 'Cloudflare Pages',
+  iconSource: './icons/skills/cloudflare-pages.svg',
 };
 
 const csharp = {
@@ -21,11 +21,6 @@ const css = {
 const figma = {
   name: 'Figma',
   iconSource: './icons/skills/figma.svg',
-};
-
-const git = {
-  name: 'Git',
-  iconSource: './icons/skills/git.svg',
 };
 
 const html = {
@@ -96,15 +91,13 @@ export const skillsBadges = [
   tailwindCss,
   bootstrap,
   oracleSqlDeveloper,
-  cloudflare,
-  microsoftSqlServer,
-  git,
-  figma,
-  jUnit,
   mockito,
+  jUnit,
+  figma,
+  cloudflarePages,
 ];
 
-export const projectOneBadges = [react, typeScript, figma, tailwindCss, cloudflare];
+export const projectOneBadges = [react, typeScript, figma, tailwindCss, cloudflarePages];
 
 export const projectTwoBadges = [wpf, csharp, microsoftSqlServer, wixToolset, figma];
 

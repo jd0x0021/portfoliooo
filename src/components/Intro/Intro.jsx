@@ -46,7 +46,7 @@ export function Intro({ id, sectionRef, ...rest }) {
                     data-status={status}
                     style={cssProps({ delay: tokens.base.durationXS })}
                   >
-                    A Creative
+                    Full-Stack
                   </span>
                   <span className={styles.line} data-status={status} />
                 </span>
