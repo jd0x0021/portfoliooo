@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 # different build commands per branch: https://developers.cloudflare.com/pages/how-to/build-commands-branches/
 
 # update this in case we need a different build command on another branch
