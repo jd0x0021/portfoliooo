@@ -107,7 +107,7 @@ export const Contact = ({ id, visible, sectionRef }) => {
       await emailjs.sendForm(serviceId, templateId, form.current, options);
       setFormIsSubmitted(true);
     } catch (error) {
-      alert(`Failed to send message.\n\n${error}`);
+      alert(`Failed to send message.\nStatus: ${error.status}\nError: ${error.text}`);
     }
   };
 
