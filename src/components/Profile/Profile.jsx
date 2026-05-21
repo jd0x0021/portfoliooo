@@ -20,6 +20,33 @@ import config from '~/config.json';
 import { media } from '~/utils/style';
 import styles from './profile.module.css';
 
+/**
+ * Calculates the total full years of professional software engineering experience.
+ *
+ * The calculation converts the elapsed milliseconds between the current date
+ * and the configured start date into calendar years using the average
+ * Gregorian year length (365.25 days) to account for leap years.
+ *
+ * @returns {number} Total years of experience.
+ */
+const yearsOfExperience = () => {
+  const startDate = new Date('2022-04');
+  const currentDate = new Date();
+
+  const millisecondsPerSecond = 1000;
+  const secondsPerMinute = 60;
+  const minutesPerHour = 60;
+  const hoursPerDay = 24;
+  const daysPerYear = 365.25;
+
+  const millisecondsPerYear =
+    millisecondsPerSecond * secondsPerMinute * minutesPerHour * hoursPerDay * daysPerYear;
+
+  const diffInMilliseconds = currentDate.getTime() - startDate.getTime();
+
+  return Math.floor(diffInMilliseconds / millisecondsPerYear);
+};
+
 const ProfileText = ({ visible, titleId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,8 +57,8 @@ const ProfileText = ({ visible, titleId }) => {
       </Heading>
 
       <Text className={styles.description} data-visible={visible} size="l" as="p">
-        I’m John Dave Dalmao, a software engineer with over 3+ years of experience in
-        building software solutions. I create well-crafted code at{' '}
+        I’m John Dave Dalmao, a software engineer with over {yearsOfExperience()}+ years
+        of experience in building software solutions. I create well-crafted code at{' '}
         <Link href="https://www.accenture.com/ph-en" target="_blank">
           Accenture
         </Link>{' '}
